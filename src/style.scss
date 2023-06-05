@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply m-0 p-0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+}
+
+@layer components {
+  //https://getcssscan.com/css-box-shadow-examples
+  .shadow-33 {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  }
+
+  .shadow-3 {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .shadow-4 {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  .light-shadow {
+    box-shadow: var(--nut-menu-bar-box-shadow, 0 2px 12px rgba(89, 89, 89, .12));
+  }
+
+}
+
+view.nut-tabbar {
+  border-bottom: 0px;
+  margin-bottom: -1px;
+}
+
+.nut-navbar__title .title {
+  font-size: 14px !important;
+  font-weight: normal !important;
+}
+
+
+:root {
+  --nut-dark-background: #131313;
+  --nut-dark-background2: #131313;
+  --nut-nut-dark-background3: #141414;
+  --nut-nut-dark-background4: #323233;
+  --nut-dark-background5: #646566;
+  --nut-dark-background6: #380e08;
+  --nut-dark-background7: #707070;
+  --nut-dark-color: var(--nut-white);
+  --nut-dark-color2: #f2270c;
+  --nut-dark-color3: rgba(232, 230, 227, 0.8);
+  --nut-dark-color-gray: var(--nut-text-color);
+  --nut-dark-calendar-choose-color: rgba(227, 227, 227, 0.2);
+
+  //font
+  --nut-font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif;
+  --nut-font-size-0: 10px;
+  --nut-font-size-1: 12px;
+  --nut-font-size-2: 14px;
+  --nut-font-size-3: 16px;
+  --nut-font-size-4: 18px;
+  --nut-font-weight-bold: 400;
+  --nut-font-size-small: var(--nut-font-size-1);
+  --nut-font-size-base: var(--nut-font-size-2);
+  --nut-font-size-large: var(--nut-font-size-3);
+  --nut-line-height-base: 1.5;
+}
+
+.nut-input {
+  @apply rounded-md;
+}
+
+.dark {
+  background: #131313;
+}
+
+.dark .nut-input {
+  background: #1c2533 !important;
+}
+
+.nut-tab-pane {
+  padding-top: 0 !important;
+}
+
+.nut-cell {
+  @apply flex items-center;
+}
+
+.nut-tabbar-item_icon-box {
+  @apply cursor-pointer hover:text-blue-500;
+}
+
+.nut-cell__value {
+  @apply dark:text-slate-500;
+}
+
+.switch-icon {
+  @apply text-2xl text-gray-500;
+}

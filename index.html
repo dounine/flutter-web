@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="/favicon.ico"/>
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <!--    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>-->
+    <meta name="keywords" content="ipa在线签名工具，苹果免签名，轻松签，全能签，巨魔工具，ios签名工具，ipa签名工具">
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vConsole/3.12.1/vconsole.min.js"></script>
+    <meta name="description"
+          content="苹果免费ipa签名工具，在线ipa签名工具，苹果免签名在线安装，免费云端签名，支持轻松签，全能签，巨魔永久签等工具">
+    <title>ipa在线签名工具</title>
+    <!-- 使用CDN的CSS文件 -->
+    <% for (const i of cdnCss) { %>
+    <link href="<%= i %>" rel="stylesheet" />
+    <% } %>
+    <!-- 使用CDN的JS文件 -->
+    <% for (const i of cdnJs) { %>
+    <script src="<%= i %>" defer></script>
+    <% } %>
+</head>
+<style>
+    .loader {
+        margin: 30vh auto;
+        width: 100px;
+        height: 100px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border-top: 5px solid #e74c3c;
+        position: relative;
+        animation: load 2s linear infinite;
+    }
+
+    .loader::before, .loader::after {
+        content: '';
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-sizing: border-box;
+        border-radius: 50%;
+    }
+
+    .loader::before {
+        border-top: 5px solid #e67e22;
+        transform: rotate(120deg);
+    }
+
+    .loader::after {
+        border-top: 5px solid #3498db;
+        transform: rotate(240deg);
+    }
+
+    .loader span {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        animation: a2 2s linear infinite;
+    }
+
+    @keyframes load {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes a2 {
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+</style>
+<body>
+<div class="loader" id="loading">
+    <span>加载中...</span>
+</div>
+<div id="app" style="display: none;"></div>
+<script type="module" src="/src/main.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        if (window.location.host === 'sign.ipadump.com') {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0e215326c351221d6fe855ddbeee3638";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        }
+    })();
+</script>
+</body>
+</html>

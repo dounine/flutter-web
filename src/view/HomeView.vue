@@ -2,6 +2,7 @@
   <div class="dark:bg-slate">
     <nut-cell-group>
       <nut-cell title="缓存" is-link desc="cache" to="/cache"></nut-cell>
+      <nut-cell title="窗口" is-link desc="window" to="/window"></nut-cell>
       <nut-cell title="数据库" is-link desc="db" to="/db"></nut-cell>
       <nut-cell title="分享" is-link desc="share" to="/share"></nut-cell>
       <nut-cell title="非对称加密" is-link desc="rsa" to="/rsa"></nut-cell>

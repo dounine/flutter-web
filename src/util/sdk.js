@@ -12,17 +12,6 @@ const retry = async (promise, times = 3, delay = 3000) => {
         }
     }
 }
-const copy = (value) => {
-    const input = document.createElement("input");
-    input.readOnly = "readonly";
-    input.value = value
-    document.body.appendChild(input);
-    input.select();
-    input.setSelectionRange(0, input.value.length);
-    document.execCommand("Copy");
-    document.body.removeChild(input);
-    showToast.success('复制链接成功')
-}
 const jsChannel = (data) => {
     return new Promise((resolve, reject) => {
         if (data.callback) {
@@ -57,6 +46,36 @@ export default {
                 action: 'set',
                 key,
                 value
+            },
+            callback: {}
+        })
+    },
+    cache_del: async ({key, value}) => {
+        return jsChannel({
+            type: 'cache',
+            data: {
+                action: 'del',
+                key
+            },
+            callback: {}
+        })
+    },
+    cache_clear: async () => {
+        return jsChannel({
+            type: 'cache',
+            data: {
+                action: 'clear',
+            },
+            callback: {}
+        })
+    },
+    window_new: async ({url, title = ''}) => {
+        return jsChannel({
+            type: 'window',
+            data: {
+                action: 'new',
+                url,
+                title,
             },
             callback: {}
         })

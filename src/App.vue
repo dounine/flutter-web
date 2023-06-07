@@ -103,53 +103,11 @@ watch(
     () => proxy.$route.path,
     () => {
       routerInit()
+      localStorage.setItem('path', proxy.$route.path)
       activeName.value = mergeName
     }
 );
-const online = async () => {
-  let res = await proxy.axios.get('/sign/online')
-  if (res.data.code === 0) {
-    count.value = res.data.data.count
-  }
-}
-const token = async () => {
-  let result = await proxy.axios.get('/sign/token')
-  if (result.data.code !== 0) {
-    showDialog({
-      title: '授权提示',
-      content: `请授权后再使用`,
-      onOk: async () => {
-        proxy.$router.push({name: 'token'})
-      }
-    })
-  }
-}
 let defaultApi = import.meta.env.VITE_API_HOST
-const queryApi = async () => {
-  try {
-    if (window.location.host === 'sign.ipadump.com') {
-      // let ipRes = await proxy.axios.get('/url/ip')
-      // let ip = ''
-      // if (ipRes.data.code === 0) {
-      //   ip = ipRes.data.data.ip
-      // }
-      // let ipNumber = parseInt(ip.replace(/[.]/g, ''))
-      let result = await proxy.axios.get('https://sign.ipadump.com/apis.json')
-      if (result.data.code === 0) {
-        let apis = result.data.data.apis
-        //创建length长度之内的随机数
-        let ipNumber = Math.floor(Math.random() * apis.length)
-        let api = apis[ipNumber]
-        localStorage.setItem('api', api)
-        return
-      }
-    }
-    localStorage.setItem('api', defaultApi)
-  } catch (e) {
-    console.log(e)
-    localStorage.setItem('api', defaultApi)
-  }
-}
 onBeforeMount(async () => {
   // if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
   if (localStorage.getItem('theme') === 'dark') {
@@ -169,7 +127,6 @@ onBeforeMount(async () => {
   // await queryApi()
   document.body.removeChild(document.getElementById("loading"));
   document.getElementById("app").style.display = "block";
-  await Promise.all([token(), online()])
 })
 </script>
 <style lang="scss" scoped>

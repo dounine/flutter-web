@@ -27,6 +27,26 @@
         <nut-button type='primary' @click="getCache" size="small">get</nut-button>
       </template>
     </nut-input>
+    <nut-input
+        v-model="delCacheValue"
+        disabled
+        placeholder="响应结果"
+        clearable
+    >
+      <template #right>
+        <nut-button type='primary' @click="detCache" size="small">del</nut-button>
+      </template>
+    </nut-input>
+    <nut-input
+        v-model="clearCacheValue"
+        disabled
+        placeholder="响应结果"
+        clearable
+    >
+      <template #right>
+        <nut-button type='primary' @click="clearCache" size="small">clear</nut-button>
+      </template>
+    </nut-input>
   </div>
 </template>
 <script setup>
@@ -40,8 +60,12 @@ import sdk from "@/util/sdk.js";
 const {proxy} = getCurrentInstance();
 const setCacheValue = ref('hello cache!!')
 const getCacheValue = ref('')
+const delCacheValue = ref('')
+const clearCacheValue = ref('')
 const back = () => {
-  proxy.$router.back();
+  proxy.$router.push({
+    name: 'home'
+  });
 }
 const setCache = async () => {
   let result = await sdk.cache_set({key: 'key', value: setCacheValue.value})
@@ -59,6 +83,26 @@ const getCache = async () => {
     showToast.fail(result.msg)
   } else {
     getCacheValue.value = result.data
+    showToast.success('success')
+  }
+}
+const detCache = async () => {
+  let result = await sdk.cache_del({key: 'key'})
+  console.log('del cache result -> ', result)
+  if (result.code !== 0) {
+    showToast.fail(result.msg)
+  } else {
+    delCacheValue.value = result.data
+    showToast.success('success')
+  }
+}
+const clearCache = async () => {
+  let result = await sdk.cache_clear()
+  console.log('clear cache result -> ', result)
+  if (result.code !== 0) {
+    showToast.fail(result.msg)
+  } else {
+    clearCacheValue.value = result.data
     showToast.success('success')
   }
 }

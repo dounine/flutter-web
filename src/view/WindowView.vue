@@ -35,7 +35,7 @@ const back = () => {
   });
 }
 const newWindow = async () => {
-  let result = await sdk.window_new({url: windowUrl.value})
+  let result = await sdk.window_single({action: 'single', url: windowUrl.value})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {

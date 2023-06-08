@@ -69,11 +69,11 @@ export default {
             callback: {}
         })
     },
-    window_new: async ({url, title = ''}) => {
+    window_single: async ({url, title = ''}) => {
         return jsChannel({
             type: 'window',
             data: {
-                action: 'new',
+                action: 'single',
                 url,
                 title,
             },

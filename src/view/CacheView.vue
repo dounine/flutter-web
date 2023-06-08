@@ -14,7 +14,7 @@
         clearable
     >
       <template #right>
-        <nut-button type='primary' @click="setCache" size="small">set</nut-button>
+        <nut-button :loading="loading" type='primary' @click="setCache" size="small">set</nut-button>
       </template>
     </nut-input>
     <nut-input
@@ -24,7 +24,7 @@
         clearable
     >
       <template #right>
-        <nut-button type='primary' @click="getCache" size="small">get</nut-button>
+        <nut-button :loading="loading" type='primary' @click="getCache" size="small">get</nut-button>
       </template>
     </nut-input>
     <nut-input
@@ -34,7 +34,7 @@
         clearable
     >
       <template #right>
-        <nut-button type='primary' @click="detCache" size="small">del</nut-button>
+        <nut-button :loading="loading" type='primary' @click="detCache" size="small">del</nut-button>
       </template>
     </nut-input>
     <nut-input
@@ -44,7 +44,7 @@
         clearable
     >
       <template #right>
-        <nut-button type='primary' @click="clearCache" size="small">clear</nut-button>
+        <nut-button :loading="loading" type='primary' @click="clearCache" size="small">clear</nut-button>
       </template>
     </nut-input>
   </div>
@@ -62,13 +62,16 @@ const setCacheValue = ref('hello cache!!')
 const getCacheValue = ref('')
 const delCacheValue = ref('')
 const clearCacheValue = ref('')
+const loading = ref(false)
 const back = () => {
   proxy.$router.push({
     name: 'home'
   });
 }
 const setCache = async () => {
+  loading.value = true
   let result = await sdk.cache_set({key: 'key', value: setCacheValue.value})
+  loading.value = false
   console.log('set cache result -> ', result)
   if (result.code !== 0) {
     showToast.fail(result.msg)
@@ -77,7 +80,9 @@ const setCache = async () => {
   }
 }
 const getCache = async () => {
+  loading.value = true
   let result = await sdk.cache_get({key: 'key'})
+  loading.value = false
   console.log('get cache result -> ', result)
   if (result.code !== 0) {
     showToast.fail(result.msg)
@@ -87,7 +92,9 @@ const getCache = async () => {
   }
 }
 const detCache = async () => {
+  loading.value = true
   let result = await sdk.cache_del({key: 'key'})
+  loading.value = fales
   console.log('del cache result -> ', result)
   if (result.code !== 0) {
     showToast.fail(result.msg)
@@ -97,7 +104,9 @@ const detCache = async () => {
   }
 }
 const clearCache = async () => {
+  loading.value = true
   let result = await sdk.cache_clear()
+  loading.value = false
   console.log('clear cache result -> ', result)
   if (result.code !== 0) {
     showToast.fail(result.msg)

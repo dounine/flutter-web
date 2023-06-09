@@ -2,6 +2,7 @@ import {createRouter, createWebHashHistory} from "vue-router"
 import HomeView from "../view/HomeView.vue"
 import CacheView from "../view/CacheView.vue"
 import WindowView from "../view/WindowView.vue"
+import DbView from "../view/DbView.vue"
 import AboutView from "../view/AboutView.vue"
 
 const routes = [
@@ -21,6 +22,10 @@ const routes = [
         path: '/window',
         name: 'window',
         component: WindowView
+    }, {
+        path: '/db',
+        name: 'db',
+        component: DbView
     }, {
         path: '/about',
         name: 'about',

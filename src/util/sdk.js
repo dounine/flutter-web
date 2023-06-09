@@ -31,53 +31,64 @@ const jsChannel = (data) => {
 export default {
     cache_get: async ({key}) => {
         return jsChannel({
-            type: 'cache',
-            data: {
-                action: 'get',
-                key
-            },
-            callback: {}
+            type: 'cache', data: {
+                action: 'get', key
+            }, callback: {}
         })
-    },
-    cache_set: async ({key, value}) => {
+    }, cache_set: async ({key, value}) => {
         return jsChannel({
-            type: 'cache',
-            data: {
-                action: 'set',
-                key,
-                value
-            },
-            callback: {}
+            type: 'cache', data: {
+                action: 'set', key, value
+            }, callback: {}
         })
-    },
-    cache_del: async ({key, value}) => {
+    }, cache_del: async ({key}) => {
         return jsChannel({
-            type: 'cache',
-            data: {
-                action: 'del',
-                key
-            },
-            callback: {}
+            type: 'cache', data: {
+                action: 'del', key
+            }, callback: {}
         })
-    },
-    cache_clear: async () => {
+    }, cache_clear: async () => {
         return jsChannel({
-            type: 'cache',
-            data: {
+            type: 'cache', data: {
                 action: 'clear',
-            },
-            callback: {}
+            }, callback: {}
+        })
+    }, window_single: async ({url, title = ''}) => {
+        return jsChannel({
+            type: 'window', data: {
+                action: 'single', url, title,
+            }, callback: {}
+        })
+    }, db_execute: async ({sql}) => {
+        return jsChannel({
+            type: 'db', data: {
+                action: 'execute', sql,
+            }, callback: {}
+        })
+    }, db_query: async ({sql, args = []}) => {
+        return jsChannel({
+            type: 'db', data: {
+                action: 'query', sql, args
+            }, callback: {}
+        })
+    }, db_insert: async ({sql, args = []}) => {
+        return jsChannel({
+            type: 'db', data: {
+                action: 'update', sql, args
+            }, callback: {}
+        })
+    }, db_update: async ({sql, args = []}) => {
+        return jsChannel({
+            type: 'db', data: {
+                action: 'del', sql, args
+            }, callback: {}
+        })
+    }, db_del: async ({sql, args = []}) => {
+        return jsChannel({
+            type: 'db', data: {
+                action: 'del', sql, args
+            }, callback: {}
         })
     },
-    window_single: async ({url, title = ''}) => {
-        return jsChannel({
-            type: 'window',
-            data: {
-                action: 'single',
-                url,
-                title,
-            },
-            callback: {}
-        })
-    }
+
 }

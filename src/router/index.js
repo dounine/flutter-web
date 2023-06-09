@@ -3,6 +3,7 @@ import HomeView from "../view/HomeView.vue"
 import CacheView from "../view/CacheView.vue"
 import WindowView from "../view/WindowView.vue"
 import DbView from "../view/DbView.vue"
+import ShareView from "../view/ShareView.vue"
 import AboutView from "../view/AboutView.vue"
 
 const routes = [
@@ -26,6 +27,10 @@ const routes = [
         path: '/db',
         name: 'db',
         component: DbView
+    }, {
+        path: '/share',
+        name: 'share',
+        component: ShareView
     }, {
         path: '/about',
         name: 'about',

@@ -89,6 +89,18 @@ export default {
                 action: 'del', sql, args
             }, callback: {}
         })
+    }, share_url: async ({url, subject}) => {
+        return jsChannel({
+            type: 'share', data: {
+                action: 'url', url, subject
+            }, callback: {}
+        })
+    }, share_file: async ({path, subject, text}) => {
+        return jsChannel({
+            type: 'share', data: {
+                action: 'file', path, subject, text
+            }, callback: {}
+        })
     },
 
 }

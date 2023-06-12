@@ -129,5 +129,21 @@ export default {
                 tip
             }
         })
+    },
+    scan_qrcode: async ({}) => {
+        return jsChannel({
+            type: 'scan',
+            data: {
+                action: 'qrcode',
+            }
+        })
+    },
+    scan_brcode: async ({}) => {
+        return jsChannel({
+            type: 'scan',
+            data: {
+                action: 'brcode',
+            }
+        })
     }
 }

@@ -6,6 +6,7 @@ import DbView from "../view/DbView.vue"
 import ShareView from "../view/ShareView.vue"
 import LauncherView from "../view/LauncherView.vue"
 import RsaView from "../view/RsaView.vue"
+import ScanView from "../view/ScanView.vue"
 import CryptoView from "../view/CryptoView.vue"
 import AboutView from "../view/AboutView.vue"
 
@@ -46,6 +47,10 @@ const routes = [
         path: '/launcher',
         name: 'launcher',
         component: LauncherView
+    }, {
+        path: '/scan',
+        name: 'scan',
+        component: ScanView
     }, {
         path: '/about',
         name: 'about',

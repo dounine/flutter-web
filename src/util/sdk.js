@@ -276,4 +276,70 @@ export default {
             })
         }
     },
+    feedback: {
+        success: async () => {
+            return jsChannel({
+                type: 'feedback',
+                data: {
+                    action: 'success',
+                }
+            })
+        },
+        error: async () => {
+            return jsChannel({
+                type: 'feedback',
+                data: {
+                    action: 'error',
+                }
+            })
+        },
+        warning: async () => {
+            return jsChannel({
+                type: 'feedback',
+                data: {
+                    action: 'warning',
+                }
+            })
+        },
+        selection: async () => {
+            return jsChannel({
+                type: 'feedback',
+                data: {
+                    action: 'selection',
+                }
+            })
+        },
+        heavy: async () => {
+            return jsChannel({
+                type: 'feedback',
+                data: {
+                    action: 'heavy',
+                }
+            })
+        },
+        medium: async () => {
+            return jsChannel({
+                type: 'feedback',
+                data: {
+                    action: 'medium',
+                }
+            })
+        },
+        light: async () => {
+            return jsChannel({
+                type: 'feedback',
+                data: {
+                    action: 'light',
+                }
+            })
+        },
+        impact: async () => {
+            return jsChannel({
+                type: 'feedback',
+                data: {
+                    action: 'impact',
+                }
+            })
+        }
+    }
 }

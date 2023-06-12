@@ -12,6 +12,7 @@
       <nut-cell title="弹窗" is-link desc="alert" to="/alert"></nut-cell>
       <nut-cell title="图片选择" is-link desc="image" to="/image"></nut-cell>
       <nut-cell title="粘贴板" is-link desc="clipboard" to="/clipboard"></nut-cell>
+      <nut-cell title="振动反馈" is-link desc="feedback" to="/feedback"></nut-cell>
     </nut-cell-group>
   </div>
 </template>

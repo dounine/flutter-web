@@ -14,7 +14,7 @@
         clearable
     >
       <template #right>
-        <nut-button type='primary' @click="image_choose" size="small">image choose</nut-button>
+        <nut-button type='primary' @click="image_choose" size="small">选择图片</nut-button>
       </template>
     </nut-input>
     <nut-input
@@ -23,10 +23,12 @@
         clearable
     >
       <template #right>
-        <nut-button type='primary' @click="image_data" size="small">image data</nut-button>
+        <nut-button type='primary' @click="image_data" size="small">地址转base64</nut-button>
       </template>
     </nut-input>
-    <nut-image :src="data" height="100" width="100"></nut-image>
+    <div class="flex flex-1 justify-center m-2">
+      <nut-image :src="data" width="30vh"></nut-image>
+    </div>
   </div>
 </template>
 <script setup>
@@ -45,7 +47,8 @@ const back = () => {
   });
 }
 const image_choose = async () => {
-  let result = await sdk.image_choose()
+  let result = await sdk.image.choose()
+  console.log(result)
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {
@@ -54,7 +57,7 @@ const image_choose = async () => {
   }
 }
 const image_data = async () => {
-  let result = await sdk.image_data({
+  let result = await sdk.image.base64({
     path: path.value
   })
   if (result.code !== 0) {

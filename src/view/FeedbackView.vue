@@ -21,7 +21,7 @@
           <nut-radio label="impact">冲击</nut-radio>
         </nut-radio-group>
       </nut-form-item>
-      <nut-cell>
+      <nut-cell class="flex flex-1 justify-center">
         <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">振动</nut-button>
       </nut-cell>
     </nut-form>

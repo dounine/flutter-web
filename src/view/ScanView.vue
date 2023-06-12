@@ -14,7 +14,7 @@
         clearable
     >
       <template #right>
-        <nut-button type='primary' @click="scan_qrcode" size="small">scan qrcode</nut-button>
+        <nut-button type='primary' @click="scan_qrcode" size="small">二维码识别</nut-button>
       </template>
     </nut-input>
     <nut-input
@@ -23,7 +23,7 @@
         clearable
     >
       <template #right>
-        <nut-button type='primary' @click="scan_brcode" size="small">scan brcode</nut-button>
+        <nut-button type='primary' @click="scan_brcode" size="small">条刑码识别</nut-button>
       </template>
     </nut-input>
   </div>

@@ -8,8 +8,10 @@
         <ShareN width="16px"></ShareN>
       </template>
     </nut-navbar>
-    <nut-button type='primary' @click="device_info" size="small">device info</nut-button>
-    <div v-if="infoResult" class="break-all p-2 m-2 text-gray-500 border rounded-md bg-gray-100 dark:bg-slate">
+    <nut-cell class="flex flex-1 justify-center">
+      <nut-button type='primary' @click="device_info" size="small">device info</nut-button>
+    </nut-cell>
+    <div class="break-all p-2 m-2 text-gray-500 border rounded-md bg-gray-100 dark:bg-slate">
       {{ infoResult }}
     </div>
   </div>
@@ -29,7 +31,7 @@ const back = () => {
   });
 }
 const device_info = async () => {
-  let result = await sdk.scan.qrcode()
+  let result = await sdk.device.info()
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {

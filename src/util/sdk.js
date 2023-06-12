@@ -15,8 +15,7 @@ const retry = async (promise, times = 3, delay = 3000) => {
 const jsChannel = (data) => {
     return new Promise((resolve, reject) => {
         if (data.callback) {
-            let randomTime = new Date().getTime()
-            data.callback.name = `callback_${randomTime}`
+            data.callback.name = `callback_${data.type}_${Math.random()}`.replace('0.', '')
             window[data.callback.name] = function (value) {
                 resolve(value)
                 delete window[data.callback.name]
@@ -120,7 +119,7 @@ export default {
                 data: {
                     action: 'encrypt',
                     content
-                }
+                }, callback: {}
             })
         },
         decrypt: async ({content}) => {
@@ -129,7 +128,7 @@ export default {
                 data: {
                     action: 'decrypt',
                     content
-                }
+                }, callback: {}
             })
         },
     },
@@ -141,7 +140,7 @@ export default {
                     action: 'url',
                     url,
                     tip
-                }
+                }, callback: {}
             })
         },
     },
@@ -151,7 +150,7 @@ export default {
                 type: 'scan',
                 data: {
                     action: 'qrcode',
-                }
+                }, callback: {}
             })
         },
         brcode: async () => {
@@ -159,14 +158,14 @@ export default {
                 type: 'scan',
                 data: {
                     action: 'brcode',
-                }
+                }, callback: {}
             })
         },
     },
     alert: {
         //type:info error warning confirm loading
         show: async ({
-                         action = 'info',
+                         type = 'info',
                          title,
                          text,
                          cancelBtnText = '取消',
@@ -178,7 +177,7 @@ export default {
             let onConfirmFunName = '', onCancelFunName = ''
             if (onConfirm) {
                 let randomTime = new Date().getTime()
-                let funName = `callback_${randomTime}`
+                let funName = `callback_ok_${randomTime}`
                 onConfirmFunName = funName
                 window[funName] = function (value) {
                     onConfirm(value)
@@ -187,7 +186,7 @@ export default {
             }
             if (onCancel) {
                 let randomTime = new Date().getTime()
-                let funName = `callback_${randomTime}`
+                let funName = `callback_cancel_${randomTime}`
                 onCancelFunName = funName
                 window[funName] = function (value) {
                     onCancel(value)
@@ -197,7 +196,8 @@ export default {
             return jsChannel({
                 type: 'alert',
                 data: {
-                    action,
+                    action: 'show',
+                    type,
                     title,
                     text,
                     cancelBtnText,
@@ -205,17 +205,25 @@ export default {
                     onConfirm: onConfirmFunName,
                     onCancel: onCancelFunName,
                     autoClose
-                }
+                }, callback: {}
             })
         },
+        close: () => {
+            return jsChannel({
+                type: 'alert',
+                data: {
+                    action: 'close',
+                }, callback: {}
+            })
+        }
     },
     image: {
-        choose: async () => {
+        choose: () => {
             return jsChannel({
                 type: 'image',
                 data: {
                     action: 'choose',
-                }
+                }, callback: {}
             })
         },
         base64: async ({path}) => {
@@ -224,7 +232,7 @@ export default {
                 data: {
                     action: 'base64',
                     path
-                }
+                }, callback: {}
             })
         },
     },
@@ -235,7 +243,7 @@ export default {
                 data: {
                     action: 'md5',
                     content
-                }
+                }, callback: {}
             })
         },
         sha1: async ({content}) => {
@@ -244,7 +252,7 @@ export default {
                 data: {
                     action: 'sha1',
                     content
-                }
+                }, callback: {}
             })
         },
         sha256: async ({content}) => {
@@ -253,7 +261,7 @@ export default {
                 data: {
                     action: 'sha256',
                     content
-                }
+                }, callback: {}
             })
         }
     },
@@ -264,7 +272,7 @@ export default {
                 data: {
                     action: 'copy',
                     text
-                }
+                }, callback: {}
             })
         },
         paste: async () => {
@@ -272,7 +280,7 @@ export default {
                 type: 'clipboard',
                 data: {
                     action: 'paste',
-                }
+                }, callback: {}
             })
         }
     },
@@ -282,7 +290,7 @@ export default {
                 type: 'feedback',
                 data: {
                     action: 'success',
-                }
+                }, callback: {}
             })
         },
         error: async () => {
@@ -290,7 +298,7 @@ export default {
                 type: 'feedback',
                 data: {
                     action: 'error',
-                }
+                }, callback: {}
             })
         },
         warning: async () => {
@@ -298,7 +306,7 @@ export default {
                 type: 'feedback',
                 data: {
                     action: 'warning',
-                }
+                }, callback: {}
             })
         },
         selection: async () => {
@@ -306,7 +314,7 @@ export default {
                 type: 'feedback',
                 data: {
                     action: 'selection',
-                }
+                }, callback: {}
             })
         },
         heavy: async () => {
@@ -314,7 +322,7 @@ export default {
                 type: 'feedback',
                 data: {
                     action: 'heavy',
-                }
+                }, callback: {}
             })
         },
         medium: async () => {
@@ -322,7 +330,7 @@ export default {
                 type: 'feedback',
                 data: {
                     action: 'medium',
-                }
+                }, callback: {}
             })
         },
         light: async () => {
@@ -330,25 +338,25 @@ export default {
                 type: 'feedback',
                 data: {
                     action: 'light',
-                }
+                }, callback: {}
             })
         },
-        impact: async () => {
+        impact: () => {
             return jsChannel({
                 type: 'feedback',
                 data: {
                     action: 'impact',
-                }
+                }, callback: {}
             })
         }
     },
     device: {
-        info: async () => {
+        info: () => {
             return jsChannel({
                 type: 'device',
                 data: {
                     action: 'info',
-                }
+                }, callback: {}
             })
         }
     }

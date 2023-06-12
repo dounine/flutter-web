@@ -35,8 +35,9 @@
       <nut-form-item label="点击按钮窗口自动关闭">
         <nut-switch v-model="basicData.autoClose"></nut-switch>
       </nut-form-item>
-      <nut-cell>
+      <nut-cell class="flex flex-1 justify-center">
         <nut-button type="primary" size="small" style="margin-right: 10px" @click="submit">显示</nut-button>
+        <nut-button type="primary" size="small" style="margin-right: 10px" @click="close">3秒后自动关闭</nut-button>
       </nut-cell>
     </nut-form>
   </div>
@@ -51,16 +52,26 @@ import sdk from "@/util/sdk.js";
 const {proxy} = getCurrentInstance();
 const basicData = reactive({
   type: 'info',
-  title: '',
-  text: '',
-  confirmBtnText: '',
-  cancelBtnText: '',
+  title: '我的标题',
+  text: '我的文本',
+  confirmBtnText: '确定',
+  cancelBtnText: '取消',
   autoClose: true
 })
 const back = () => {
   proxy.$router.push({
     name: 'home'
   });
+}
+const close = async () => {
+  setTimeout(async () => {
+    let result = await sdk.alert.close()
+    if (result.code !== 0) {
+      showToast.fail(result.msg)
+    } else {
+      showToast.success('success')
+    }
+  }, 3000)
 }
 const submit = async () => {
   let result = await sdk.alert.show({

@@ -4,6 +4,7 @@ import CacheView from "../view/CacheView.vue"
 import WindowView from "../view/WindowView.vue"
 import DbView from "../view/DbView.vue"
 import ShareView from "../view/ShareView.vue"
+import LauncherView from "../view/LauncherView.vue"
 import RsaView from "../view/RsaView.vue"
 import CryptoView from "../view/CryptoView.vue"
 import AboutView from "../view/AboutView.vue"
@@ -41,6 +42,10 @@ const routes = [
         path: '/crypto',
         name: 'crypto',
         component: CryptoView
+    }, {
+        path: '/launcher',
+        name: 'launcher',
+        component: LauncherView
     }, {
         path: '/about',
         name: 'about',

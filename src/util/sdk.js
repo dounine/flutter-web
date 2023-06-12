@@ -119,5 +119,15 @@ export default {
                 content
             }
         })
+    },
+    launcher_url: async ({url, tip = '找不到对应的应用'}) => {
+        return jsChannel({
+            type: 'launcher',
+            data: {
+                action: 'url',
+                url,
+                tip
+            }
+        })
     }
 }

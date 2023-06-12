@@ -10,6 +10,7 @@ import ScanView from "../view/ScanView.vue"
 import AlertView from "../view/AlertView.vue"
 import ImageView from "../view/ImageView.vue"
 import FeedbackView from "../view/FeedbackView.vue"
+import DeviceView from "../view/DeviceView.vue"
 import CryptoView from "../view/CryptoView.vue"
 import ClipboardView from "../view/ClipboardView.vue"
 import AboutView from "../view/AboutView.vue"
@@ -71,6 +72,10 @@ const routes = [
         path: '/feedback',
         name: 'feedback',
         component: FeedbackView
+    }, {
+        path: '/device',
+        name: 'device',
+        component: DeviceView
     }, {
         path: '/about',
         name: 'about',

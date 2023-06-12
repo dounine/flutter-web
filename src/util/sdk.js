@@ -341,5 +341,15 @@ export default {
                 }
             })
         }
+    },
+    device: {
+        info: async () => {
+            return jsChannel({
+                type: 'device',
+                data: {
+                    action: 'info',
+                }
+            })
+        }
     }
 }

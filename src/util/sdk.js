@@ -29,199 +29,251 @@ const jsChannel = (data) => {
     })
 }
 export default {
-    cache_get: async ({key}) => {
-        return jsChannel({
-            type: 'cache', data: {
-                action: 'get', key
-            }, callback: {}
-        })
-    }, cache_set: async ({key, value}) => {
-        return jsChannel({
-            type: 'cache', data: {
-                action: 'set', key, value
-            }, callback: {}
-        })
-    }, cache_del: async ({key}) => {
-        return jsChannel({
-            type: 'cache', data: {
-                action: 'del', key
-            }, callback: {}
-        })
-    }, cache_clear: async () => {
-        return jsChannel({
-            type: 'cache', data: {
-                action: 'clear',
-            }, callback: {}
-        })
-    }, window_single: async ({url, title = ''}) => {
-        return jsChannel({
-            type: 'window', data: {
-                action: 'single', url, title,
-            }, callback: {}
-        })
-    }, db_execute: async ({sql}) => {
-        return jsChannel({
-            type: 'db', data: {
-                action: 'execute', sql,
-            }, callback: {}
-        })
-    }, db_query: async ({sql, args = []}) => {
-        return jsChannel({
-            type: 'db', data: {
-                action: 'query', sql, args
-            }, callback: {}
-        })
-    }, db_insert: async ({sql, args = []}) => {
-        return jsChannel({
-            type: 'db', data: {
-                action: 'update', sql, args
-            }, callback: {}
-        })
-    }, db_update: async ({sql, args = []}) => {
-        return jsChannel({
-            type: 'db', data: {
-                action: 'del', sql, args
-            }, callback: {}
-        })
-    }, db_del: async ({sql, args = []}) => {
-        return jsChannel({
-            type: 'db', data: {
-                action: 'del', sql, args
-            }, callback: {}
-        })
-    }, share_url: async ({url, subject}) => {
-        return jsChannel({
-            type: 'share', data: {
-                action: 'url', url, subject
-            }, callback: {}
-        })
-    }, share_file: async ({path, subject, text}) => {
-        return jsChannel({
-            type: 'share', data: {
-                action: 'file', path, subject, text
-            }, callback: {}
-        })
+    cache: {
+        get: async ({key}) => {
+            return jsChannel({
+                type: 'cache', data: {
+                    action: 'get', key
+                }, callback: {}
+            })
+        }, set: async ({key, value}) => {
+            return jsChannel({
+                type: 'cache', data: {
+                    action: 'set', key, value
+                }, callback: {}
+            })
+        }, del: async ({key}) => {
+            return jsChannel({
+                type: 'cache', data: {
+                    action: 'del', key
+                }, callback: {}
+            })
+        }, clear: async () => {
+            return jsChannel({
+                type: 'cache', data: {
+                    action: 'clear',
+                }, callback: {}
+            })
+        },
     },
-    rsa_encrypt: async ({content}) => {
-        return jsChannel({
-            type: 'rsa',
-            data: {
-                action: 'encrypt',
-                content
-            }
-        })
-    },
-    rsa_decrypt: async ({content}) => {
-        return jsChannel({
-            type: 'rsa',
-            data: {
-                action: 'decrypt',
-                content
-            }
-        })
-    },
-    launcher_url: async ({url, tip = '找不到对应的应用'}) => {
-        return jsChannel({
-            type: 'launcher',
-            data: {
-                action: 'url',
-                url,
-                tip
-            }
-        })
-    },
-    scan_qrcode: async ({}) => {
-        return jsChannel({
-            type: 'scan',
-            data: {
-                action: 'qrcode',
-            }
-        })
-    },
-    scan_brcode: async ({}) => {
-        return jsChannel({
-            type: 'scan',
-            data: {
-                action: 'brcode',
-            }
-        })
-    },
-    //type:info error warning confirm loading
-    alert_show: async ({
-                           action = 'info',
-                           title,
-                           text,
-                           cancelBtnText = '取消',
-                           confirmBtnText = '确定',
-                           onConfirm,
-                           onCancel,
-                           autoClose = true
-                       }) => {
-        let onConfirmFunName = '', onCancelFunName = ''
-        if (onConfirm) {
-            let randomTime = new Date().getTime()
-            let funName = `callback_${randomTime}`
-            onConfirmFunName = funName
-            window[funName] = function (value) {
-                onConfirm(value)
-                delete window[funName]
-            }
+    window: {
+        single: async ({url, title = ''}) => {
+            return jsChannel({
+                type: 'window', data: {
+                    action: 'single', url, title,
+                }, callback: {}
+            })
         }
-        if (onCancel) {
-            let randomTime = new Date().getTime()
-            let funName = `callback_${randomTime}`
-            onCancelFunName = funName
-            window[funName] = function (value) {
-                onCancel(value)
-                delete window[funName]
-            }
+    },
+    db: {
+        execute: async ({sql}) => {
+            return jsChannel({
+                type: 'db', data: {
+                    action: 'execute', sql,
+                }, callback: {}
+            })
+        }, query: async ({sql, args = []}) => {
+            return jsChannel({
+                type: 'db', data: {
+                    action: 'query', sql, args
+                }, callback: {}
+            })
+        }, insert: async ({sql, args = []}) => {
+            return jsChannel({
+                type: 'db', data: {
+                    action: 'update', sql, args
+                }, callback: {}
+            })
+        }, update: async ({sql, args = []}) => {
+            return jsChannel({
+                type: 'db', data: {
+                    action: 'del', sql, args
+                }, callback: {}
+            })
+        }, del: async ({sql, args = []}) => {
+            return jsChannel({
+                type: 'db', data: {
+                    action: 'del', sql, args
+                }, callback: {}
+            })
         }
-        return jsChannel({
-            type: 'alert',
-            data: {
-                action,
-                title,
-                text,
-                cancelBtnText,
-                confirmBtnText,
-                onConfirm: onConfirmFunName,
-                onCancel: onCancelFunName,
-                autoClose
-            }
-        })
     },
-    image_choose: async ({}) => {
-        return jsChannel({
-            type: 'image',
-            data: {
-                action: 'choose',
-            }
-        })
+    share: {
+        url: async ({url, subject}) => {
+            return jsChannel({
+                type: 'share', data: {
+                    action: 'url', url, subject
+                }, callback: {}
+            })
+        }, file: async ({path, subject, text}) => {
+            return jsChannel({
+                type: 'share', data: {
+                    action: 'file', path, subject, text
+                }, callback: {}
+            })
+        },
     },
-    image_data: async ({path}) => {
-        return jsChannel({
-            type: 'image',
-            data: {
-                action: 'data',
-                path
-            }
-        })
+    rsa: {
+        encrypt: async ({content}) => {
+            return jsChannel({
+                type: 'rsa',
+                data: {
+                    action: 'encrypt',
+                    content
+                }
+            })
+        },
+        decrypt: async ({content}) => {
+            return jsChannel({
+                type: 'rsa',
+                data: {
+                    action: 'decrypt',
+                    content
+                }
+            })
+        },
     },
-    clipboard_copy: async ({text}) => {
-        return jsChannel({
-            type: 'clipboard',
-            data: {
-                action: 'copy',
-                text
-            }
-        })
+    launcher: {
+        url: async ({url, tip = '找不到对应的应用'}) => {
+            return jsChannel({
+                type: 'launcher',
+                data: {
+                    action: 'url',
+                    url,
+                    tip
+                }
+            })
+        },
     },
-    clipboard_paste: async ({}) => {
-        return jsChannel({
-            type: 'clipboard',
-            data: {
-                action: 'paste',
+    scan: {
+        qrcode: async () => {
+            return jsChannel({
+                type: 'scan',
+                data: {
+                    action: 'qrcode',
+                }
+            })
+        },
+        brcode: async () => {
+            return jsChannel({
+                type: 'scan',
+                data: {
+                    action: 'brcode',
+                }
+            })
+        },
+    },
+    alert: {
+        //type:info error warning confirm loading
+        show: async ({
+                         action = 'info',
+                         title,
+                         text,
+                         cancelBtnText = '取消',
+                         confirmBtnText = '确定',
+                         onConfirm,
+                         onCancel,
+                         autoClose = true
+                     }) => {
+            let onConfirmFunName = '', onCancelFunName = ''
+            if (onConfirm) {
+                let randomTime = new Date().getTime()
+                let funName = `callback_${randomTime}`
+                onConfirmFunName = funName
+                window[funName] = function (value) {
+                    onConfirm(value)
+                    delete window[funName]
+                }
             }
-        })
-    }
+            if (onCancel) {
+                let randomTime = new Date().getTime()
+                let funName = `callback_${randomTime}`
+                onCancelFunName = funName
+                window[funName] = function (value) {
+                    onCancel(value)
+                    delete window[funName]
+                }
+            }
+            return jsChannel({
+                type: 'alert',
+                data: {
+                    action,
+                    title,
+                    text,
+                    cancelBtnText,
+                    confirmBtnText,
+                    onConfirm: onConfirmFunName,
+                    onCancel: onCancelFunName,
+                    autoClose
+                }
+            })
+        },
+    },
+    image: {
+        choose: async () => {
+            return jsChannel({
+                type: 'image',
+                data: {
+                    action: 'choose',
+                }
+            })
+        },
+        base64: async ({path}) => {
+            return jsChannel({
+                type: 'image',
+                data: {
+                    action: 'base64',
+                    path
+                }
+            })
+        },
+    },
+    crypto: {
+        md5: async ({content}) => {
+            return jsChannel({
+                type: 'crypto',
+                data: {
+                    action: 'md5',
+                    content
+                }
+            })
+        },
+        sha1: async ({content}) => {
+            return jsChannel({
+                type: 'crypto',
+                data: {
+                    action: 'sha1',
+                    content
+                }
+            })
+        },
+        sha256: async ({content}) => {
+            return jsChannel({
+                type: 'crypto',
+                data: {
+                    action: 'sha256',
+                    content
+                }
+            })
+        }
+    },
+    clipboard: {
+        copy: async ({text}) => {
+            return jsChannel({
+                type: 'clipboard',
+                data: {
+                    action: 'copy',
+                    text
+                }
+            })
+        },
+        paste: async () => {
+            return jsChannel({
+                type: 'clipboard',
+                data: {
+                    action: 'paste',
+                }
+            })
+        }
+    },
 }

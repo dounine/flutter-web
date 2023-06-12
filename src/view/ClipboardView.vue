@@ -45,7 +45,7 @@ const back = () => {
   });
 }
 const clipboard_copy = async () => {
-  let result = await sdk.clipboard_copy({text: text.value})
+  let result = await sdk.clipboard.copy({text: text.value})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {
@@ -53,7 +53,7 @@ const clipboard_copy = async () => {
   }
 }
 const clipboard_paste = async () => {
-  let result = await sdk.clipboard_paste({})
+  let result = await sdk.clipboard.paste()
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {

@@ -81,7 +81,7 @@ const back = () => {
 }
 const execute = async () => {
   loading.value = true
-  let result = await sdk.db_execute({sql: executeValue.value})
+  let result = await sdk.db.execute({sql: executeValue.value})
   loading.value = false
   if (result.code !== 0) {
     showToast.fail(result.msg)
@@ -91,7 +91,7 @@ const execute = async () => {
 }
 const query = async () => {
   loading.value = true
-  let result = await sdk.db_query({sql: queryValue.value, args: []})
+  let result = await sdk.db.query({sql: queryValue.value, args: []})
   loading.value = false
   if (result.code !== 0) {
     showToast.fail(result.msg)
@@ -102,7 +102,7 @@ const query = async () => {
 }
 const insert = async () => {
   loading.value = true
-  let result = await sdk.db_del({sql: insertValue.value, args: []})
+  let result = await sdk.db.del({sql: insertValue.value, args: []})
   loading.value = false
   if (result.code !== 0) {
     showToast.fail(result.msg)
@@ -112,7 +112,7 @@ const insert = async () => {
 }
 const update = async () => {
   loading.value = true
-  let result = await sdk.db_update({sql: updateValue.value, args: []})
+  let result = await sdk.db.update({sql: updateValue.value, args: []})
   loading.value = false
   if (result.code !== 0) {
     showToast.fail(result.msg)
@@ -122,7 +122,7 @@ const update = async () => {
 }
 const del = async () => {
   loading.value = true
-  let result = await sdk.db_del({sql: delValue.value, args: []})
+  let result = await sdk.db.del({sql: delValue.value, args: []})
   loading.value = false
   if (result.code !== 0) {
     showToast.fail(result.msg)

@@ -63,7 +63,7 @@ const back = () => {
   });
 }
 const submit = async () => {
-  let result = await sdk.alert_show({
+  let result = await sdk.alert.show({
     ...basicData,
     onConfirm: function () {
       showToast.success('ok')

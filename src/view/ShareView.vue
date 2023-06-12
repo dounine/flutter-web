@@ -45,7 +45,7 @@ const back = () => {
   });
 }
 const shareUrl = async () => {
-  let result = await sdk.share_url({url: url.value, subject: '最好的下载网站'})
+  let result = await sdk.share.url({url: url.value, subject: '最好的下载网站'})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {
@@ -53,7 +53,7 @@ const shareUrl = async () => {
   }
 }
 const shareFile = async () => {
-  let result = await sdk.share_file({path: path.value, subject: 'hello', text: 'hell.zip'})
+  let result = await sdk.share.file({path: path.value, subject: 'hello', text: 'hell.zip'})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {

@@ -45,7 +45,7 @@ const back = () => {
   });
 }
 const image_choose = async () => {
-  let result = await sdk.image_choose({})
+  let result = await sdk.image_choose()
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {

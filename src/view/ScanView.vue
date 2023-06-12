@@ -44,7 +44,7 @@ const back = () => {
   });
 }
 const scan_qrcode = async () => {
-  let result = await sdk.scan_qrcode({})
+  let result = await sdk.scan.qrcode()
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {
@@ -53,7 +53,7 @@ const scan_qrcode = async () => {
   }
 }
 const scan_brcode = async () => {
-  let result = await sdk.scan_brcode({})
+  let result = await sdk.scan.brcode()
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {

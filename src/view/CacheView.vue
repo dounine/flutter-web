@@ -70,7 +70,7 @@ const back = () => {
 }
 const setCache = async () => {
   loading.value = true
-  let result = await sdk.cache_set({key: 'key', value: setCacheValue.value})
+  let result = await sdk.cache.set({key: 'key', value: setCacheValue.value})
   loading.value = false
   console.log('set cache result -> ', result)
   if (result.code !== 0) {
@@ -81,7 +81,7 @@ const setCache = async () => {
 }
 const getCache = async () => {
   loading.value = true
-  let result = await sdk.cache_get({key: 'key'})
+  let result = await sdk.cache.get({key: 'key'})
   loading.value = false
   console.log('get cache result -> ', result)
   if (result.code !== 0) {
@@ -93,7 +93,7 @@ const getCache = async () => {
 }
 const detCache = async () => {
   loading.value = true
-  let result = await sdk.cache_del({key: 'key'})
+  let result = await sdk.cache.del({key: 'key'})
   loading.value = fales
   console.log('del cache result -> ', result)
   if (result.code !== 0) {
@@ -105,7 +105,7 @@ const detCache = async () => {
 }
 const clearCache = async () => {
   loading.value = true
-  let result = await sdk.cache_clear()
+  let result = await sdk.cache.clear()
   loading.value = false
   console.log('clear cache result -> ', result)
   if (result.code !== 0) {

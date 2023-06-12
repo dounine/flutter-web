@@ -53,7 +53,7 @@ const back = () => {
   });
 }
 const encrypt = async () => {
-  let result = await sdk.rsa_encrypt({content: content.value})
+  let result = await sdk.rsa.encrypt({content: content.value})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {
@@ -62,7 +62,7 @@ const encrypt = async () => {
   }
 }
 const decrypt = async () => {
-  let result = await sdk.rsa_decrypt({content: contentEncrypt.value})
+  let result = await sdk.rsa.decrypt({content: contentEncrypt.value})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {

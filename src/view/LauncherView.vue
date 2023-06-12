@@ -35,7 +35,7 @@ const back = () => {
   });
 }
 const launcher = async () => {
-  let result = await sdk.launcher_url({url: url.value, tip: '找不到支付应用'})
+  let result = await sdk.launcher.url({url: url.value, tip: '找不到支付应用'})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {

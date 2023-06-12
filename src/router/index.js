@@ -7,6 +7,7 @@ import ShareView from "../view/ShareView.vue"
 import LauncherView from "../view/LauncherView.vue"
 import RsaView from "../view/RsaView.vue"
 import ScanView from "../view/ScanView.vue"
+import AlertView from "../view/AlertView.vue"
 import CryptoView from "../view/CryptoView.vue"
 import AboutView from "../view/AboutView.vue"
 
@@ -51,6 +52,10 @@ const routes = [
         path: '/scan',
         name: 'scan',
         component: ScanView
+    }, {
+        path: '/alert',
+        name: 'alert',
+        component: AlertView
     }, {
         path: '/about',
         name: 'about',

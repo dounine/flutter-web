@@ -145,5 +145,49 @@ export default {
                 action: 'brcode',
             }
         })
-    }
+    },
+    //type:info error warning confirm loading
+    alert_show: async ({
+                           action = 'info',
+                           title,
+                           text,
+                           cancelBtnText = '取消',
+                           confirmBtnText = '确定',
+                           onConfirm,
+                           onCancel,
+                           autoClose = true
+                       }) => {
+        let onConfirmFunName = '', onCancelFunName = ''
+        if (onConfirm) {
+            let randomTime = new Date().getTime()
+            let funName = `callback_${randomTime}`
+            onConfirmFunName = funName
+            window[funName] = function (value) {
+                onConfirm(value)
+                delete window[funName]
+            }
+        }
+        if (onCancel) {
+            let randomTime = new Date().getTime()
+            let funName = `callback_${randomTime}`
+            onCancelFunName = funName
+            window[funName] = function (value) {
+                onCancel(value)
+                delete window[funName]
+            }
+        }
+        return jsChannel({
+            type: 'alert',
+            data: {
+                action,
+                title,
+                text,
+                cancelBtnText,
+                confirmBtnText,
+                onConfirm: onConfirmFunName,
+                onCancel: onCancelFunName,
+                autoClose
+            }
+        })
+    },
 }

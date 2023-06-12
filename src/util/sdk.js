@@ -206,5 +206,22 @@ export default {
                 path
             }
         })
+    },
+    clipboard_copy: async ({text}) => {
+        return jsChannel({
+            type: 'clipboard',
+            data: {
+                action: 'copy',
+                text
+            }
+        })
+    },
+    clipboard_paste: async ({}) => {
+        return jsChannel({
+            type: 'clipboard',
+            data: {
+                action: 'paste',
+            }
+        })
     }
 }

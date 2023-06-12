@@ -10,6 +10,7 @@ import ScanView from "../view/ScanView.vue"
 import AlertView from "../view/AlertView.vue"
 import ImageView from "../view/ImageView.vue"
 import CryptoView from "../view/CryptoView.vue"
+import ClipboardView from "../view/ClipboardView.vue"
 import AboutView from "../view/AboutView.vue"
 
 const routes = [
@@ -61,6 +62,10 @@ const routes = [
         path: '/image',
         name: 'image',
         component: ImageView
+    }, {
+        path: '/clipboard',
+        name: 'clipboard',
+        component: ClipboardView
     }, {
         path: '/about',
         name: 'about',

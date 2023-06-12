@@ -4,6 +4,7 @@ import CacheView from "../view/CacheView.vue"
 import WindowView from "../view/WindowView.vue"
 import DbView from "../view/DbView.vue"
 import ShareView from "../view/ShareView.vue"
+import RsaView from "../view/RsaView.vue"
 import AboutView from "../view/AboutView.vue"
 
 const routes = [
@@ -31,6 +32,10 @@ const routes = [
         path: '/share',
         name: 'share',
         component: ShareView
+    }, {
+        path: '/rsa',
+        name: 'rsa',
+        component: RsaView
     }, {
         path: '/about',
         name: 'about',

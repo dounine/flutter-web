@@ -102,5 +102,22 @@ export default {
             }, callback: {}
         })
     },
-
+    rsa_encrypt: async ({content}) => {
+        return jsChannel({
+            type: 'rsa',
+            data: {
+                action: 'encrypt',
+                content
+            }
+        })
+    },
+    rsa_decrypt: async ({content}) => {
+        return jsChannel({
+            type: 'rsa',
+            data: {
+                action: 'decrypt',
+                content
+            }
+        })
+    }
 }

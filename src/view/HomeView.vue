@@ -6,7 +6,7 @@
       <nut-cell title="数据库" is-link desc="db" to="/db"></nut-cell>
       <nut-cell title="分享" is-link desc="share" to="/share"></nut-cell>
       <nut-cell title="非对称加密" is-link desc="rsa" to="/rsa"></nut-cell>
-      <nut-cell title="普通加密" is-link desc="crypto" to="/crypto"></nut-cell>
+      <nut-cell title="数字加密" is-link desc="crypto" to="/crypto"></nut-cell>
       <nut-cell title="启动器" is-link desc="launcher" to="/launcher"></nut-cell>
       <nut-cell title="扫码" is-link desc="scan" to="/scan"></nut-cell>
       <nut-cell title="弹窗" is-link desc="alert" to="/alert"></nut-cell>

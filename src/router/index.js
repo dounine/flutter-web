@@ -5,6 +5,7 @@ import WindowView from "../view/WindowView.vue"
 import DbView from "../view/DbView.vue"
 import ShareView from "../view/ShareView.vue"
 import RsaView from "../view/RsaView.vue"
+import CryptoView from "../view/CryptoView.vue"
 import AboutView from "../view/AboutView.vue"
 
 const routes = [
@@ -36,6 +37,10 @@ const routes = [
         path: '/rsa',
         name: 'rsa',
         component: RsaView
+    }, {
+        path: '/crypto',
+        name: 'crypto',
+        component: CryptoView
     }, {
         path: '/about',
         name: 'about',

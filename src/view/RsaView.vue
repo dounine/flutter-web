@@ -1,6 +1,6 @@
 <template>
   <div class="dark:bg-slate">
-    <nut-navbar @on-click-back="back" title="分享/share">
+    <nut-navbar @on-click-back="back" title="非对称加密/rsa">
       <template #left>
         <div>返回</div>
       </template>

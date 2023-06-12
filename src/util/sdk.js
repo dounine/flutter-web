@@ -190,4 +190,21 @@ export default {
             }
         })
     },
+    image_choose: async ({}) => {
+        return jsChannel({
+            type: 'image',
+            data: {
+                action: 'choose',
+            }
+        })
+    },
+    image_data: async ({path}) => {
+        return jsChannel({
+            type: 'image',
+            data: {
+                action: 'data',
+                path
+            }
+        })
+    }
 }

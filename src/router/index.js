@@ -8,6 +8,7 @@ import LauncherView from "../view/LauncherView.vue"
 import RsaView from "../view/RsaView.vue"
 import ScanView from "../view/ScanView.vue"
 import AlertView from "../view/AlertView.vue"
+import ImageView from "../view/ImageView.vue"
 import CryptoView from "../view/CryptoView.vue"
 import AboutView from "../view/AboutView.vue"
 
@@ -56,6 +57,10 @@ const routes = [
         path: '/alert',
         name: 'alert',
         component: AlertView
+    }, {
+        path: '/image',
+        name: 'image',
+        component: ImageView
     }, {
         path: '/about',
         name: 'about',

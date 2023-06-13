@@ -4,9 +4,6 @@
       <template #left>
         <div>返回</div>
       </template>
-      <template #right>
-        <ShareN width="16px"></ShareN>
-      </template>
     </nut-navbar>
     <nut-cell class="flex flex-1 justify-center">
       <nut-button type='primary' @click="device_info" size="small">device info</nut-button>

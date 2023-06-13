@@ -4,9 +4,6 @@
       <template #left>
         <div>返回</div>
       </template>
-      <template #right>
-        <ShareN width="16px"></ShareN>
-      </template>
     </nut-navbar>
     <nut-input
         v-model="text"
@@ -33,6 +30,7 @@
 import {
   showToast
 } from "@nutui/nutui";
+import {ShareN} from '@nutui/icons-vue'
 import {ref, onBeforeMount, getCurrentInstance, onBeforeUnmount} from "vue";
 import sdk from "@/util/sdk.js";
 

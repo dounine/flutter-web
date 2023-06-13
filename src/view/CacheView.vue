@@ -4,9 +4,6 @@
       <template #left>
         <div>返回</div>
       </template>
-      <template #right>
-        <ShareN width="16px"></ShareN>
-      </template>
     </nut-navbar>
     <nut-input
         v-model="setCacheValue"
@@ -94,7 +91,7 @@ const getCache = async () => {
 const detCache = async () => {
   loading.value = true
   let result = await sdk.cache.del({key: 'key'})
-  loading.value = fales
+  loading.value = false
   console.log('del cache result -> ', result)
   if (result.code !== 0) {
     showToast.fail(result.msg)

@@ -4,9 +4,6 @@
       <template #left>
         <div>返回</div>
       </template>
-      <template #right>
-        <ShareN width="16px"></ShareN>
-      </template>
     </nut-navbar>
     <nut-input
         v-model="content"

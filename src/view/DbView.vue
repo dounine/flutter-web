@@ -4,9 +4,6 @@
       <template #left>
         <div>返回</div>
       </template>
-      <template #right>
-        <ShareN width="16px"></ShareN>
-      </template>
     </nut-navbar>
     <nut-input
         v-model="executeValue"
@@ -102,7 +99,7 @@ const query = async () => {
 }
 const insert = async () => {
   loading.value = true
-  let result = await sdk.db.del({sql: insertValue.value, args: []})
+  let result = await sdk.db.insert({sql: insertValue.value, args: []})
   loading.value = false
   if (result.code !== 0) {
     showToast.fail(result.msg)
@@ -122,7 +119,7 @@ const update = async () => {
 }
 const del = async () => {
   loading.value = true
-  let result = await sdk.db.del({sql: delValue.value, args: []})
+  let result = await sdk.db.delete({sql: delValue.value, args: []})
   loading.value = false
   if (result.code !== 0) {
     showToast.fail(result.msg)

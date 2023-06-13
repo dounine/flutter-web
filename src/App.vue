@@ -52,7 +52,7 @@ import {ref, reactive, onBeforeMount, getCurrentInstance, watch} from "vue";
 import ClipboardJS from 'clipboard';
 
 const {proxy} = getCurrentInstance()
-const theme = ref('light')
+const theme = ref('')
 const darkTheme = ref(theme.value === 'dark')
 const themeVars = reactive({
   formItemBodyInputTextAlign: 'right',

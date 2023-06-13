@@ -80,19 +80,19 @@ export default {
         }, insert: async ({sql, args = []}) => {
             return jsChannel({
                 type: 'db', data: {
-                    action: 'update', sql, args
+                    action: 'insert', sql, args
                 }, callback: {}
             })
         }, update: async ({sql, args = []}) => {
             return jsChannel({
                 type: 'db', data: {
-                    action: 'del', sql, args
+                    action: 'update', sql, args
                 }, callback: {}
             })
-        }, del: async ({sql, args = []}) => {
+        }, delete: async ({sql, args = []}) => {
             return jsChannel({
                 type: 'db', data: {
-                    action: 'del', sql, args
+                    action: 'delete', sql, args
                 }, callback: {}
             })
         }

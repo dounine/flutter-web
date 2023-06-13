@@ -65,6 +65,7 @@ const back = () => {
 }
 const md5 = async () => {
   let result = await sdk.crypto.md5({content: md5Content.value})
+  console.log(result)
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {
@@ -73,20 +74,20 @@ const md5 = async () => {
   }
 }
 const sha1 = async () => {
-  let result = await sdk.crypto.sha1({content: md5Content.value})
+  let result = await sdk.crypto.sha1({content: sha1Content.value})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {
-    md5Result.value = result.data
+    sha1Result.value = result.data
     showToast.success('success')
   }
 }
 const sha256 = async () => {
-  let result = await sdk.crypto.sha256({content: md5Content.value})
+  let result = await sdk.crypto.sha256({content: sha256Content.value})
   if (result.code !== 0) {
     showToast.fail(result.msg)
   } else {
-    md5Result.value = result.data
+    sha256Result.value = result.data
     showToast.success('success')
   }
 }

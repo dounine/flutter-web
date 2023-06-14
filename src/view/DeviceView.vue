@@ -8,8 +8,11 @@
     <nut-cell class="flex flex-1 justify-center">
       <nut-button type='primary' @click="device_info" size="small">device info</nut-button>
     </nut-cell>
-    <div class="break-all p-2 m-2 text-gray-500 border rounded-md bg-gray-100 dark:bg-slate">
-      {{ infoResult }}
+    <div class="break-all p-2 m-2 text-gray-500 border rounded-md bg-gray-100 dark:bg-slate relative">
+      <i class="icon icon-copy copy ml-2 text-gray-500 text-lg absolute r-0" data-clipboard-target="#device-info"></i>
+      <div id="device-info">
+        {{ infoResult }}
+      </div>
     </div>
   </div>
 </template>

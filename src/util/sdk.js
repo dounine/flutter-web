@@ -6,9 +6,9 @@ const jsChannel = (data) => {
                 resolve(value)
                 delete window[data.callback.name]
             }
-            window.app.postMessage(JSON.stringify(data))
+            window.sdk.postMessage(JSON.stringify(data))
         } else {
-            window.app.postMessage(JSON.stringify(data))
+            window.sdk.postMessage(JSON.stringify(data))
             resolve()
         }
     })
@@ -42,10 +42,10 @@ export default {
         },
     },
     window: {
-        single: async ({url, title = ''}) => {
+        single: async ({url, title = '', safeArea = false, bgColor = '61D7E2'}) => {
             return jsChannel({
                 type: 'window', data: {
-                    action: 'single', url, title,
+                    action: 'single', url, title, safeArea, bgColor
                 }, callback: {}
             })
         }

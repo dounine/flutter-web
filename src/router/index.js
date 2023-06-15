@@ -14,6 +14,7 @@ import DeviceView from "../view/DeviceView.vue"
 import CryptoView from "../view/CryptoView.vue"
 import ClipboardView from "../view/ClipboardView.vue"
 import AboutView from "../view/AboutView.vue"
+import ChildrenView from "@/view/ChildrenView.vue";
 
 const routes = [
     {
@@ -24,6 +25,10 @@ const routes = [
         path: '/home',
         name: 'home',
         component: HomeView
+    }, {
+        path: '/children',
+        name: 'children',
+        component: ChildrenView,
     }, {
         path: '/cache',
         name: 'cache',

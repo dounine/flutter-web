@@ -1,54 +1,14 @@
 <template>
   <div>
-    <div class="navbar bg-base-100 shadow">
-      <div class="navbar-start">
-        <i @click="back" class="icon icon-left text-accent ml-2 cursor-pointer"></i>
-      </div>
-      <div class="navbar-center">
-        <div class="text-sm font-medium">缓存/cache</div>
-      </div>
-      <div class="navbar-end">
-      </div>
-    </div>
-    <nut-input
-        v-model="setCacheValue"
-        placeholder="内容"
-        clearable
-    >
-      <template #right>
-        <nut-button :loading="loading" type='primary' @click="setCache" size="small">set</nut-button>
-      </template>
-    </nut-input>
-    <nut-input
-        v-model="getCacheValue"
-        disabled
-        placeholder="响应结果"
-        clearable
-    >
-      <template #right>
-        <nut-button :loading="loading" type='primary' @click="getCache" size="small">get</nut-button>
-      </template>
-    </nut-input>
-    <nut-input
-        v-model="delCacheValue"
-        disabled
-        placeholder="响应结果"
-        clearable
-    >
-      <template #right>
-        <nut-button :loading="loading" type='primary' @click="detCache" size="small">del</nut-button>
-      </template>
-    </nut-input>
-    <nut-input
-        v-model="clearCacheValue"
-        disabled
-        placeholder="响应结果"
-        clearable
-    >
-      <template #right>
-        <nut-button :loading="loading" type='primary' @click="clearCache" size="small">clear</nut-button>
-      </template>
-    </nut-input>
+    children root
+
+    <router-link to="/children/a1">
+      <button class="btn btn-primary">a1</button>
+    </router-link>
+    <router-link to="/children/a2">
+      <button class="btn btn-primary">a2</button>
+    </router-link>
+    <router-view></router-view>
   </div>
 </template>
 <script setup>

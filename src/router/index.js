@@ -16,6 +16,7 @@ import ClipboardView from "../view/ClipboardView.vue"
 import AboutView from "../view/AboutView.vue"
 import ChildrenView from "@/view/ChildrenView.vue";
 import NotFoundView from "@/view/NotFoundView.vue";
+import ChatView from "@/view/ChatView.vue";
 
 const routes = [
     {
@@ -86,6 +87,10 @@ const routes = [
         path: '/about',
         name: 'about',
         component: AboutView
+    }, {
+        path: '/chat',
+        name: 'chat',
+        component: ChatView
     }, {
         path: '/:catchAll(.*)',
         component: NotFoundView

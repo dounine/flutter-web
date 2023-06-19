@@ -15,6 +15,7 @@ import CryptoView from "../view/CryptoView.vue"
 import ClipboardView from "../view/ClipboardView.vue"
 import AboutView from "../view/AboutView.vue"
 import ChildrenView from "@/view/ChildrenView.vue";
+import NotFoundView from "@/view/NotFoundView.vue";
 
 const routes = [
     {
@@ -85,6 +86,9 @@ const routes = [
         path: '/about',
         name: 'about',
         component: AboutView
+    }, {
+        path: '/:catchAll(.*)',
+        component: NotFoundView
     }
 ]
 const router = createRouter({

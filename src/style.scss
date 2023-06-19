@@ -69,6 +69,14 @@ view.nut-tabbar {
 //  --nut-line-height-base: 1.5;
 //}
 
+.divider:before, .divider:after {
+  height: 1px;
+}
+//
+//input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+//  -webkit-appearance: none;
+//}
+
 .nut-input {
   @apply rounded-md;
 }

@@ -53,13 +53,13 @@
     </div>
     <div class="h-20"></div>
     <router-view></router-view>
-    <div class="btm-nav shadow">
-      <button class="hover:text-secondary" @click="navClick('home')"
+    <div class="btm-nav shadow-33">
+      <button @click="navClick('home')"
               v-bind:class="{'text-primary':activeName==='home'}">
         <i class="icon icon-function cursor-pointer"></i>
         <span class="font-medium text-xs">功能列表</span>
       </button>
-      <button class="hover:text-secondary" @click="navClick('about')" :to="{name:'about'}"
+      <button @click="navClick('about')" :to="{name:'about'}"
               v-bind:class="{'text-primary':activeName==='about'}">
         <i class="icon icon-about cursor-pointer"></i>
         <span class="font-medium text-xs">关于</span>

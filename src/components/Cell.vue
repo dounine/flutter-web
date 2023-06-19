@@ -1,5 +1,5 @@
 <template>
-  <div @click="toLink" class="flex p-3 cursor-pointer">
+  <div @click="toLink" class="flex p-2 cursor-pointer">
     <div class="flex-1 text-sm text-base">
       {{ title }}
     </div>

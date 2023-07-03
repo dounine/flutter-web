@@ -1,5 +1,8 @@
 const jsChannel = (data) => {
     return new Promise((resolve, reject) => {
+        if (!window.sdk) {
+            return reject('sdk not ready')
+        }
         if (data.callback) {
             data.callback.name = `callback_${data.type}_${Math.random()}`.replace('0.', '')
             window[data.callback.name] = function (value) {
@@ -47,6 +50,63 @@ export default {
                 type: 'window', data: {
                     action: 'single', url, title, safeArea, bgColor
                 }, callback: {}
+            })
+        }
+    },
+    chat: {
+        create: async ({
+                           title,
+                           url,
+                           appBarColor = '#ECEDEC',
+                           loading = true,
+                           loadingColor = '#5370EA',
+                           loadingAnimatedMillisecond = 300,
+                           bgColor = '#FFFFFF',
+                           menus = ['emoji', 'image', 'camera', 'file', 'favorite', 'location'],
+                       }) => {
+            return jsChannel({
+                type: 'chat', data: {
+                    action: 'create',
+                    title,
+                    url,
+                    appBarColor,
+                    bgColor,
+                    menus,
+                    loading,
+                    loadingColor,
+                    loadingAnimatedMillisecond
+                }, callback: {}
+            })
+        },
+        listen: async ({
+                           loading = false,
+                           onMore = function (data) {
+                               console.log('click onMore')
+                           },
+                           onBack = function (data) {
+                               console.log('click onBack')
+                           },
+                           onMessage = function (message) {
+                               console.log('onMessage', message)
+                           }
+                       }) => {
+            let data = {
+                action: 'listen', loading
+            }
+            if (onMore) {
+                data['onMore'] = `callback_chat_onmore_${Math.random()}`.replace('0.', '')
+                window[data['onMore']] = onMore
+            }
+            if (onBack) {
+                data['onBack'] = `callback_chat_onback_${Math.random()}`.replace('0.', '')
+                window[data['onBack']] = onBack
+            }
+            if (onMessage) {
+                data['onMessage'] = `callback_chat_onmessage_${Math.random()}`.replace('0.', '')
+                window[data['onMessage']] = onMessage
+            }
+            return jsChannel({
+                type: 'chat', data, callback: {}
             })
         }
     },
@@ -343,6 +403,26 @@ export default {
         info: () => {
             return jsChannel({
                 type: 'device',
+                data: {
+                    action: 'info',
+                }, callback: {}
+            })
+        }
+    },
+    navigator: {
+        pop: () => {
+            return jsChannel({
+                type: 'navigator',
+                data: {
+                    action: 'pop',
+                }, callback: {}
+            })
+        }
+    },
+    version: {
+        info: () => {
+            return jsChannel({
+                type: 'sdk',
                 data: {
                     action: 'info',
                 }, callback: {}

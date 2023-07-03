@@ -1,27 +1,115 @@
 <template>
-  <div>
-    <div>hello</div>
-    <div>hello</div>
-    <div>hello</div>
-    <div>hello</div>
+  <div class="px-4">
+    <div class="navbar bg-base-100 bg-opacity-0 max-w-screen-md mx-auto">
+      <div class="navbar-start">
+        <button @click="back" class="btn">
+          <i class="icon icon-left"></i>
+        </button>
+      </div>
+      <div class="navbar-center">
+        <div class="btn btn-ghost normal-case text-lg">
+          聊天窗口
+        </div>
+      </div>
+      <div class="navbar-end">
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="flex-none">
+        <span class="normal-case">表情包</span>
+      </div>
+      <div class="ml-2 flex-1 justify-end">
+        <input type="checkbox" :checked="emoji" class="checkbox"/>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="flex-none">
+        <span class="normal-case">图片</span>
+      </div>
+      <div class="ml-2 flex-1 justify-end">
+        <input type="checkbox" :checked="image" class="checkbox"/>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="flex-none">
+        <span class="normal-case">拍照</span>
+      </div>
+      <div class="ml-2 flex-1 justify-end">
+        <input type="checkbox" :checked="camera" class="checkbox"/>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="flex-none">
+        <span class="normal-case">文件</span>
+      </div>
+      <div class="ml-2 flex-1 justify-end">
+        <input type="checkbox" :checked="file" class="checkbox"/>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="flex-none">
+        <span class="normal-case">收藏</span>
+      </div>
+      <div class="ml-2 flex-1 justify-end">
+        <input type="checkbox" :checked="favorite" class="checkbox"/>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="flex-none">
+        <span class="normal-case">位置</span>
+      </div>
+      <div class="ml-2 flex-1 justify-end">
+        <input type="checkbox" :checked="location" class="checkbox"/>
+      </div>
+    </div>
+    <button @click="create" class="btn btn-neutral btn-block btn-circle shadow">
+      <i class="icon icon-install text-base"></i>
+      创建窗口
+    </button>
   </div>
 </template>
 
 <script setup>
 import {ref, onBeforeMount, getCurrentInstance, reactive} from 'vue'
+import sdk from "@/util/sdk.js";
 
-const storage = ref('0kb')
+const emoji = ref(false)
+const location = ref(false)
+const camera = ref(false)
+const image = ref(false)
+const file = ref(false)
+const favorite = ref(false)
 const {proxy} = getCurrentInstance()
-const queryStorage = async () => {
-  proxy.axios.get('/sign/storage')
-      .then(res => {
-        if (res.data.code === 0) {
-          storage.value = res.data.data.size
-        }
-      })
+const create = () => {
+  let menus = [];
+  if (emoji) {
+    menus.push('emoji')
+  }
+  if (location) {
+    menus.push('location')
+  }
+  if (camera) {
+    menus.push('camera')
+  }
+  if (image) {
+    menus.push('image')
+  }
+  if (file) {
+    menus.push('file')
+  }
+  if (favorite) {
+    menus.push('favorite')
+  }
+  sdk.chat.create({
+    title: 'Lake', url: 'http://192.168.0.75:8080/#/chat_window',
+    menus,
+    loading: true
+  })
+}
+const back = () => {
+  proxy.$router.back()
 }
 onBeforeMount(async () => {
-  await queryStorage()
 })
 
 </script>

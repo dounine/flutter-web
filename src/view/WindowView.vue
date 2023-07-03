@@ -25,7 +25,7 @@ import {ref, reactive, onBeforeMount, getCurrentInstance, onBeforeUnmount} from 
 import sdk from "@/util/sdk.js";
 
 const {proxy} = getCurrentInstance();
-const windowUrl = ref('https://baidu.com')
+const windowUrl = ref('http://localhost:8080/#/chat')
 const back = () => {
   proxy.$router.push({
     name: 'home'

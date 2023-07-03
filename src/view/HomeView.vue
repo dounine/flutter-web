@@ -5,6 +5,8 @@
       <div class="divider m-0"></div>
       <Cell title="窗口" to="/window" desc="window"></Cell>
       <div class="divider m-0"></div>
+      <Cell title="聊天" to="/chat" desc="chat"></Cell>
+      <div class="divider m-0"></div>
       <Cell title="数据库" to="/db" desc="db"></Cell>
       <div class="divider m-0"></div>
       <Cell title="分享" to="/share" desc="share"></Cell>
@@ -31,12 +33,7 @@
   </div>
 </template>
 <script setup>
-import {
-  showToast
-} from "@nutui/nutui";
-import {Loading, Right} from "@nutui/icons-vue";
 import {ref, reactive, onBeforeMount, getCurrentInstance, onBeforeUnmount} from "vue";
-import Common from "../util/common.js";
 import CellGroup from "@/components/CellGroup.vue";
 
 const {proxy} = getCurrentInstance();

@@ -1,24 +1,4 @@
 import {createRouter, createWebHashHistory} from "vue-router"
-import HomeView from "../view/HomeView.vue"
-import CacheView from "../view/CacheView.vue"
-import WindowView from "../view/WindowView.vue"
-import DbView from "../view/DbView.vue"
-import ShareView from "../view/ShareView.vue"
-import LauncherView from "../view/LauncherView.vue"
-import RsaView from "../view/RsaView.vue"
-import ScanView from "../view/ScanView.vue"
-import AlertView from "../view/AlertView.vue"
-import ImageView from "../view/ImageView.vue"
-import FeedbackView from "../view/FeedbackView.vue"
-import DeviceView from "../view/DeviceView.vue"
-import CryptoView from "../view/CryptoView.vue"
-import ClipboardView from "../view/ClipboardView.vue"
-import AboutView from "../view/AboutView.vue"
-import ChildrenView from "@/view/ChildrenView.vue";
-import NotFoundView from "@/view/NotFoundView.vue";
-import ChatView from "@/view/ChatView.vue";
-import ChatWindowView from "@/view/ChatWindowView.vue";
-
 const routes = [
     {
         path: '/',
@@ -27,78 +7,78 @@ const routes = [
     {
         path: '/home',
         name: 'home',
-        component: HomeView
+        component: () => import('../view/HomeView.vue')
     }, {
         path: '/children',
         name: 'children',
-        component: ChildrenView,
+        component: () => import('../view/ChildrenView.vue')
     }, {
         path: '/cache',
         name: 'cache',
-        component: CacheView
+        component: () => import('../view/CacheView.vue')
     }, {
         path: '/window',
         name: 'window',
-        component: WindowView
+        component: () => import('../view/WindowView.vue')
     }, {
         path: '/db',
         name: 'db',
-        component: DbView
+        component: () => import('../view/DbView.vue')
     }, {
         path: '/share',
         name: 'share',
-        component: ShareView
+        component: () => import('../view/ShareView.vue')
     }, {
         path: '/rsa',
         name: 'rsa',
-        component: RsaView
+        component: () => import('../view/RsaView.vue')
     }, {
         path: '/crypto',
         name: 'crypto',
-        component: CryptoView
+        component: () => import('../view/CryptoView.vue')
     }, {
         path: '/launcher',
         name: 'launcher',
-        component: LauncherView
+        component: () => import('../view/LauncherView.vue')
     }, {
         path: '/scan',
         name: 'scan',
-        component: ScanView
+        component: () => import('../view/ScanView.vue')
     }, {
         path: '/alert',
         name: 'alert',
-        component: AlertView
+        component: () => import('../view/AlertView.vue')
     }, {
         path: '/image',
         name: 'image',
-        component: ImageView
+        component: () => import('../view/ImageView.vue')
     }, {
         path: '/clipboard',
         name: 'clipboard',
-        component: ClipboardView
+        component: () => import('../view/ClipboardView.vue')
     }, {
         path: '/feedback',
         name: 'feedback',
-        component: FeedbackView
+        component: () => import('../view/FeedbackView.vue')
     }, {
         path: '/device',
         name: 'device',
-        component: DeviceView
+        component: () => import('../view/DeviceView.vue')
     }, {
         path: '/about',
         name: 'about',
-        component: AboutView
+        component: () => import('../view/AboutView.vue')
     }, {
         path: '/chat',
         name: 'chat',
-        component: ChatView
+        component: () => import('../view/ChatView.vue')
     }, {
         path: '/chat_window',
         name: 'chat_window',
-        component: ChatWindowView
+        component: () => import('../view/ChatWindowView.vue')
     }, {
         path: '/:catchAll(.*)',
-        component: NotFoundView
+        component: () => import('../view/NotFoundView.vue')
     }
 ]
 const router = createRouter({

@@ -59,7 +59,6 @@ export default {
                            url,
                            emoji = true,
                            appBarColor = '#ECEDEC',
-                           loading = true,
                            loadingColor = '#5370EA',
                            loadingAnimatedMillisecond = 300,
                            bgColor = '#FFFFFF',
@@ -74,14 +73,12 @@ export default {
                     appBarColor,
                     bgColor,
                     menus,
-                    loading,
                     loadingColor,
                     loadingAnimatedMillisecond
                 }, callback: {}
             })
         },
         listen: async ({
-                           loading = false,
                            onMore = function (data) {
                                console.log('click onMore')
                            },
@@ -93,7 +90,7 @@ export default {
                            }
                        }) => {
             let data = {
-                action: 'listen', loading
+                action: 'listen'
             }
             if (onMore) {
                 data['onMore'] = `callback_chat_onmore_${Math.random()}`.replace('0.', '')
@@ -417,6 +414,24 @@ export default {
                 type: 'navigator',
                 data: {
                     action: 'pop',
+                }, callback: {}
+            })
+        }
+    },
+    page: {
+        loading: () => {
+            return jsChannel({
+                type: 'page',
+                data: {
+                    action: 'loading',
+                }, callback: {}
+            })
+        },
+        loaded: () => {
+            return jsChannel({
+                type: 'page',
+                data: {
+                    action: 'loaded',
                 }, callback: {}
             })
         }

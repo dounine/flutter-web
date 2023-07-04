@@ -36,8 +36,9 @@
 </template>
 <script setup>
 import {showToast} from '@nutui/nutui';
-import {ref, reactive, onBeforeMount, getCurrentInstance, watch} from "vue";
+import {ref, reactive, onBeforeMount, getCurrentInstance, watch, onMounted} from "vue";
 import ClipboardJS from 'clipboard';
+import sdk from "@/util/sdk.js";
 
 const {proxy} = getCurrentInstance()
 const dark = ref(localStorage.getItem('theme') === 'dark')
@@ -93,6 +94,9 @@ watch(
       activeName.value = mergeName
     }
 );
+onMounted(async () => {
+  await sdk.page.loaded();
+})
 onBeforeMount(async () => {
   if (dark.value) {
     document.documentElement.attributes['data-theme'].value = 'dark'

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="navFold">
     <div>hello</div>
     <div>hello</div>
     <div>hello</div>
@@ -12,6 +12,9 @@ import {ref, onBeforeMount, getCurrentInstance, reactive, onMounted} from 'vue'
 import sdk from "@/util/sdk.js";
 
 const {proxy} = getCurrentInstance()
+const navFold = async () => {
+  await sdk.chat.navFold();
+}
 onBeforeMount(async () => {
   await sdk.chat.listen({
     onMore: (data) => {

@@ -59,6 +59,7 @@ export default {
                            url,
                            emoji = true,
                            appBarColor = '#ECEDEC',
+                           navBarColor = '#F6F5F6',
                            loadingColor = '#5370EA',
                            loadingAnimatedMillisecond = 300,
                            bgColor = '#FFFFFF',
@@ -71,6 +72,7 @@ export default {
                     url,
                     emoji,
                     appBarColor,
+                    navBarColor,
                     bgColor,
                     menus,
                     loadingColor,
@@ -107,7 +109,29 @@ export default {
             return jsChannel({
                 type: 'chat', data, callback: {}
             })
+        },
+        focus: () => {
+            return jsChannel({
+                type: 'chat', data: {
+                    action: 'focus',
+                }, callback: {}
+            })
+        },
+        unfocus: () => {
+            return jsChannel({
+                type: 'chat', data: {
+                    action: 'unfocus',
+                }, callback: {}
+            })
+        },
+        navFold: () => {
+            return jsChannel({
+                type: 'chat', data: {
+                    action: 'navFold',
+                }, callback: {}
+            })
         }
+
     },
     db: {
         execute: async ({sql}) => {

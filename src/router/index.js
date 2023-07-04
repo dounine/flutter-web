@@ -22,7 +22,7 @@ import ChatWindowView from "@/view/ChatWindowView.vue";
 const routes = [
     {
         path: '/',
-        redirect: localStorage.getItem('path') || '/home'
+        redirect: '/home'
     },
     {
         path: '/home',

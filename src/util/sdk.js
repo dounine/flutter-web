@@ -57,18 +57,20 @@ export default {
         create: async ({
                            title,
                            url,
+                           emoji = true,
                            appBarColor = '#ECEDEC',
                            loading = true,
                            loadingColor = '#5370EA',
                            loadingAnimatedMillisecond = 300,
                            bgColor = '#FFFFFF',
-                           menus = ['emoji', 'image', 'camera', 'file', 'favorite', 'location'],
+                           menus = ['image', 'camera', 'file', 'favorite', 'location'],
                        }) => {
             return jsChannel({
                 type: 'chat', data: {
                     action: 'create',
                     title,
                     url,
+                    emoji,
                     appBarColor,
                     bgColor,
                     menus,

@@ -43,8 +43,7 @@ export default {
                 }, callback: {}
             })
         },
-    },
-    window: {
+    }, window: {
         single: async ({url, title = '', safeArea = false, bgColor = '61D7E2'}) => {
             return jsChannel({
                 type: 'window', data: {
@@ -52,8 +51,7 @@ export default {
                 }, callback: {}
             })
         }
-    },
-    chat: {
+    }, chat: {
         create: async ({
                            title,
                            url,
@@ -63,6 +61,8 @@ export default {
                            loadingColor = '#5370EA',
                            loadingAnimatedMillisecond = 300,
                            bgColor = '#FFFFFF',
+                           backEnable = true,
+                           moreEnable = true,
                            menus = ['image', 'camera', 'file', 'favorite', 'location'],
                        }) => {
             return jsChannel({
@@ -76,21 +76,20 @@ export default {
                     bgColor,
                     menus,
                     loadingColor,
-                    loadingAnimatedMillisecond
+                    loadingAnimatedMillisecond,
+                    backEnable,
+                    moreEnable,
                 }, callback: {}
             })
-        },
-        listen: async ({
-                           onMore = function (data) {
-                               console.log('click onMore')
-                           },
-                           onBack = function (data) {
-                               console.log('click onBack')
-                           },
-                           onMessage = function (message) {
-                               console.log('onMessage', message)
-                           }
-                       }) => {
+        }, listen: async ({
+                              onMore = function (data) {
+                                  console.log('click onMore')
+                              }, onBack = function (data) {
+                console.log('click onBack')
+            }, onMessage = function (message) {
+                console.log('onMessage', message)
+            }
+                          }) => {
             let data = {
                 action: 'listen'
             }
@@ -109,22 +108,19 @@ export default {
             return jsChannel({
                 type: 'chat', data, callback: {}
             })
-        },
-        focus: () => {
+        }, focus: () => {
             return jsChannel({
                 type: 'chat', data: {
                     action: 'focus',
                 }, callback: {}
             })
-        },
-        unfocus: () => {
+        }, unfocus: () => {
             return jsChannel({
                 type: 'chat', data: {
                     action: 'unfocus',
                 }, callback: {}
             })
-        },
-        navFold: () => {
+        }, navFold: () => {
             return jsChannel({
                 type: 'chat', data: {
                     action: 'navFold',
@@ -132,8 +128,7 @@ export default {
             })
         }
 
-    },
-    db: {
+    }, db: {
         execute: async ({sql}) => {
             return jsChannel({
                 type: 'db', data: {
@@ -165,8 +160,7 @@ export default {
                 }, callback: {}
             })
         }
-    },
-    share: {
+    }, share: {
         url: async ({url, subject}) => {
             return jsChannel({
                 type: 'share', data: {
@@ -180,58 +174,43 @@ export default {
                 }, callback: {}
             })
         },
-    },
-    rsa: {
+    }, rsa: {
         encrypt: async ({content}) => {
             return jsChannel({
-                type: 'rsa',
-                data: {
-                    action: 'encrypt',
-                    content
+                type: 'rsa', data: {
+                    action: 'encrypt', content
                 }, callback: {}
             })
-        },
-        decrypt: async ({content}) => {
+        }, decrypt: async ({content}) => {
             return jsChannel({
-                type: 'rsa',
-                data: {
-                    action: 'decrypt',
-                    content
+                type: 'rsa', data: {
+                    action: 'decrypt', content
                 }, callback: {}
             })
         },
-    },
-    launcher: {
+    }, launcher: {
         url: async ({url, tip = '找不到对应的应用'}) => {
             return jsChannel({
-                type: 'launcher',
-                data: {
-                    action: 'url',
-                    url,
-                    tip
+                type: 'launcher', data: {
+                    action: 'url', url, tip
                 }, callback: {}
             })
         },
-    },
-    scan: {
+    }, scan: {
         qrcode: async () => {
             return jsChannel({
-                type: 'scan',
-                data: {
+                type: 'scan', data: {
                     action: 'qrcode',
                 }, callback: {}
             })
-        },
-        brcode: async () => {
+        }, brcode: async () => {
             return jsChannel({
-                type: 'scan',
-                data: {
+                type: 'scan', data: {
                     action: 'brcode',
                 }, callback: {}
             })
         },
-    },
-    alert: {
+    }, alert: {
         //type:info error warning confirm loading
         show: async ({
                          type = 'info',
@@ -263,8 +242,7 @@ export default {
                 }
             }
             return jsChannel({
-                type: 'alert',
-                data: {
+                type: 'alert', data: {
                     action: 'show',
                     type,
                     title,
@@ -276,195 +254,196 @@ export default {
                     autoClose
                 }, callback: {}
             })
-        },
-        close: () => {
+        }, close: () => {
             return jsChannel({
-                type: 'alert',
-                data: {
+                type: 'alert', data: {
                     action: 'close',
                 }, callback: {}
             })
         }
-    },
-    image: {
+    }, image: {
         choose: () => {
             return jsChannel({
-                type: 'image',
-                data: {
+                type: 'image', data: {
                     action: 'choose',
                 }, callback: {}
             })
-        },
-        base64: async ({path}) => {
+        }, base64: async ({path}) => {
             return jsChannel({
-                type: 'image',
-                data: {
-                    action: 'base64',
-                    path
+                type: 'image', data: {
+                    action: 'base64', path
                 }, callback: {}
             })
         },
-    },
-    crypto: {
+    }, crypto: {
         md5: async ({content}) => {
             return jsChannel({
-                type: 'crypto',
-                data: {
-                    action: 'secret',
-                    type: 'md5',
-                    content
+                type: 'crypto', data: {
+                    action: 'secret', type: 'md5', content
                 }, callback: {}
             })
-        },
-        sha1: async ({content}) => {
+        }, sha1: async ({content}) => {
             return jsChannel({
-                type: 'crypto',
-                data: {
-                    action: 'secret',
-                    type: 'sha1',
-                    content
+                type: 'crypto', data: {
+                    action: 'secret', type: 'sha1', content
                 }, callback: {}
             })
-        },
-        sha256: async ({content}) => {
+        }, sha256: async ({content}) => {
             return jsChannel({
-                type: 'crypto',
-                data: {
-                    action: 'secret',
-                    type: 'sha256',
-                    content
+                type: 'crypto', data: {
+                    action: 'secret', type: 'sha256', content
                 }, callback: {}
             })
         }
-    },
-    clipboard: {
+    }, clipboard: {
         copy: async ({text}) => {
             return jsChannel({
-                type: 'clipboard',
-                data: {
-                    action: 'copy',
-                    text
+                type: 'clipboard', data: {
+                    action: 'copy', text
                 }, callback: {}
             })
-        },
-        paste: async () => {
+        }, paste: async () => {
             return jsChannel({
-                type: 'clipboard',
-                data: {
+                type: 'clipboard', data: {
                     action: 'paste',
                 }, callback: {}
             })
         }
-    },
-    feedback: {
+    }, feedback: {
         success: async () => {
             return jsChannel({
-                type: 'feedback',
-                data: {
+                type: 'feedback', data: {
                     action: 'success',
                 }, callback: {}
             })
-        },
-        error: async () => {
+        }, error: async () => {
             return jsChannel({
-                type: 'feedback',
-                data: {
+                type: 'feedback', data: {
                     action: 'error',
                 }, callback: {}
             })
-        },
-        warning: async () => {
+        }, warning: async () => {
             return jsChannel({
-                type: 'feedback',
-                data: {
+                type: 'feedback', data: {
                     action: 'warning',
                 }, callback: {}
             })
-        },
-        selection: async () => {
+        }, selection: async () => {
             return jsChannel({
-                type: 'feedback',
-                data: {
+                type: 'feedback', data: {
                     action: 'selection',
                 }, callback: {}
             })
-        },
-        heavy: async () => {
+        }, heavy: async () => {
             return jsChannel({
-                type: 'feedback',
-                data: {
+                type: 'feedback', data: {
                     action: 'heavy',
                 }, callback: {}
             })
-        },
-        medium: async () => {
+        }, medium: async () => {
             return jsChannel({
-                type: 'feedback',
-                data: {
+                type: 'feedback', data: {
                     action: 'medium',
                 }, callback: {}
             })
-        },
-        light: async () => {
+        }, light: async () => {
             return jsChannel({
-                type: 'feedback',
-                data: {
+                type: 'feedback', data: {
                     action: 'light',
                 }, callback: {}
             })
-        },
-        impact: () => {
+        }, impact: () => {
             return jsChannel({
-                type: 'feedback',
-                data: {
+                type: 'feedback', data: {
                     action: 'impact',
                 }, callback: {}
             })
         }
-    },
-    device: {
+    }, device: {
         info: () => {
             return jsChannel({
-                type: 'device',
-                data: {
+                type: 'device', data: {
                     action: 'info',
                 }, callback: {}
             })
         }
-    },
-    navigator: {
-        pop: () => {
+    }, navigator: {
+        push: ({
+                   url,
+                   appBar = {
+                       title: '',
+                       bgColor: '#ECEDEC',
+                       miniIcon: false,
+                       elevation: 0.01,
+                       backEnable: false,
+                       backClose: true,
+                       moreEnable: false,
+                       loadingShow: true
+                   },
+                   loading = false,
+                   loadingColor = '#5370EA',
+                   loadingAnimatedMillisecond = 300,
+                   bgColor = '#FFFFFF',
+                   miniAnimation = false,
+               }) => {
             return jsChannel({
-                type: 'navigator',
-                data: {
+                type: 'navigator', data: {
+                    action: 'push',
+                    appBar,
+                    url,
+                    loadingColor,
+                    loading,
+                    loadingAnimatedMillisecond,
+                    bgColor,
+                    miniAnimation,
+                }, callback: {}
+            })
+        }, listen: async ({
+                              onMore = function (data) {
+                                  console.log('click onMore')
+                              }, onBack = function (data) {
+                console.log('click onBack')
+            },
+                          }) => {
+            let data = {
+                action: 'listen', appBar: {}
+            }
+            if (onMore) {
+                data.appBar['onMore'] = `callback_chat_onmore_${Math.random()}`.replace('0.', '')
+                window[data['onMore']] = onMore
+            }
+            if (onBack) {
+                data.appBar['onBack'] = `callback_chat_onback_${Math.random()}`.replace('0.', '')
+                window[data['onBack']] = onBack
+            }
+            return jsChannel({
+                type: 'navigator', data, callback: {}
+            })
+        }, pop: () => {
+            return jsChannel({
+                type: 'navigator', data: {
                     action: 'pop',
                 }, callback: {}
             })
         }
-    },
-    page: {
+    }, page: {
         loading: () => {
             return jsChannel({
-                type: 'page',
-                data: {
+                type: 'page', data: {
                     action: 'loading',
                 }, callback: {}
             })
-        },
-        loaded: () => {
+        }, loaded: () => {
             return jsChannel({
-                type: 'page',
-                data: {
+                type: 'page', data: {
                     action: 'loaded',
                 }, callback: {}
             })
         }
-    },
-    version: {
+    }, version: {
         info: () => {
             return jsChannel({
-                type: 'sdk',
-                data: {
+                type: 'sdk', data: {
                     action: 'info',
                 }, callback: {}
             })

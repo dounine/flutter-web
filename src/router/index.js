@@ -69,6 +69,10 @@ const routes = [
         name: 'about',
         component: () => import('../view/AboutView.vue')
     }, {
+        path: '/navigator',
+        name: 'navigator',
+        component: () => import('../view/NavigatorView.vue')
+    }, {
         path: '/chat',
         name: 'chat',
         component: () => import('../view/ChatView.vue')

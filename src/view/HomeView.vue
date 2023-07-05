@@ -3,6 +3,8 @@
     <CellGroup>
       <Cell title="缓存" to="/cache" desc="cache"></Cell>
       <div class="divider m-0"></div>
+      <Cell title="导航" to="/navigator" desc="navigator"></Cell>
+      <div class="divider m-0"></div>
       <Cell title="窗口" to="/window" desc="window"></Cell>
       <div class="divider m-0"></div>
       <Cell title="聊天" to="/chat" desc="chat"></Cell>

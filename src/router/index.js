@@ -13,6 +13,10 @@ const routes = [
         name: 'children',
         component: () => import('../view/ChildrenView.vue')
     }, {
+        path: '/mini_program',
+        name: 'mini_program',
+        component: () => import('../view/MiniProgramView.vue')
+    }, {
         path: '/cache',
         name: 'cache',
         component: () => import('../view/CacheView.vue')

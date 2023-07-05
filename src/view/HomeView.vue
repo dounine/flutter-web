@@ -5,6 +5,8 @@
       <div class="divider m-0"></div>
       <Cell title="导航" to="/navigator" desc="navigator"></Cell>
       <div class="divider m-0"></div>
+      <Cell title="小程序" to="/mini_program" desc="mini_program"></Cell>
+      <div class="divider m-0"></div>
       <Cell title="窗口" to="/window" desc="window"></Cell>
       <div class="divider m-0"></div>
       <Cell title="聊天" to="/chat" desc="chat"></Cell>

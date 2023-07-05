@@ -367,6 +367,63 @@ export default {
                 }, callback: {}
             })
         }
+    },
+    mini_program: {
+        push: ({
+                   url,
+                   appBar = {
+                       title: '',
+                       bgColor: '#ECEDEC',
+                       elevation: 0.01,
+                       showBar: true,
+                       showSetting: true,
+                       showClose: true,
+                       closePop: true
+                   },
+                   loading = false,
+                   loadingColor = '#5370EA',
+                   loadingAnimatedMillisecond = 300,
+                   bgColor = '#FFFFFF',
+               }) => {
+            return jsChannel({
+                type: 'mini_program', data: {
+                    action: 'push',
+                    appBar,
+                    url,
+                    loadingColor,
+                    loading,
+                    loadingAnimatedMillisecond,
+                    bgColor,
+                }, callback: {}
+            })
+        }, listen: async ({
+                              onSetting = function (data) {
+                                  console.log('click setting')
+                              }, onClose = function (data) {
+                console.log('click onClose')
+            },
+                          }) => {
+            let data = {
+                action: 'listen', appBar: {}
+            }
+            if (onSetting) {
+                data.appBar['onSetting'] = `callback_mini_onsetting_${Math.random()}`.replace('0.', '')
+                window[data['onSetting']] = onSetting
+            }
+            if (onClose) {
+                data.appBar['onClose'] = `callback_mini_onclose_${Math.random()}`.replace('0.', '')
+                window[data['onClose']] = onClose
+            }
+            return jsChannel({
+                type: 'mini_program', data, callback: {}
+            })
+        }, pop: () => {
+            return jsChannel({
+                type: 'mini_program', data: {
+                    action: 'pop',
+                }, callback: {}
+            })
+        }
     }, navigator: {
         push: ({
                    url,

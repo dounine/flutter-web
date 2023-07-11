@@ -17,41 +17,44 @@ const jsChannel = (data) => {
     })
 }
 export default {
+    //缓存
     cache: {
+        //获取缓存
         get: async ({key}) => {
             return jsChannel({
                 type: 'cache', data: {
                     action: 'get', key
                 }, callback: {}
             })
-        }, set: async ({key, value}) => {
+        },
+        //设置缓存
+        set: async ({key, value}) => {
             return jsChannel({
                 type: 'cache', data: {
                     action: 'set', key, value
                 }, callback: {}
             })
-        }, del: async ({key}) => {
+        },
+        //删除缓存
+        del: async ({key}) => {
             return jsChannel({
                 type: 'cache', data: {
                     action: 'del', key
                 }, callback: {}
             })
-        }, clear: async () => {
+        },
+        //清空缓存
+        clear: async () => {
             return jsChannel({
                 type: 'cache', data: {
                     action: 'clear',
                 }, callback: {}
             })
         },
-    }, window: {
-        single: async ({url, title = '', safeArea = false, bgColor = '61D7E2'}) => {
-            return jsChannel({
-                type: 'window', data: {
-                    action: 'single', url, title, safeArea, bgColor
-                }, callback: {}
-            })
-        }
-    }, chat: {
+    },
+    //聊天
+    chat: {
+        //创建聊天
         create: async ({
                            title,
                            url,
@@ -81,15 +84,17 @@ export default {
                     moreEnable,
                 }, callback: {}
             })
-        }, listen: async ({
-                              onMore = function (data) {
-                                  console.log('click onMore')
-                              }, onBack = function (data) {
+        },
+        //监控按钮跟消息
+        listen: async ({
+                           onMore = function (data) {
+                               console.log('click onMore')
+                           }, onBack = function (data) {
                 console.log('click onBack')
             }, onMessage = function (message) {
                 console.log('onMessage', message)
             }
-                          }) => {
+                       }) => {
             let data = {
                 action: 'listen'
             }
@@ -108,19 +113,25 @@ export default {
             return jsChannel({
                 type: 'chat', data, callback: {}
             })
-        }, focus: () => {
+        },
+        //获取焦点
+        focus: () => {
             return jsChannel({
                 type: 'chat', data: {
                     action: 'focus',
                 }, callback: {}
             })
-        }, unfocus: () => {
+        },
+        //失去焦点
+        unfocus: () => {
             return jsChannel({
                 type: 'chat', data: {
                     action: 'unfocus',
                 }, callback: {}
             })
-        }, navFold: () => {
+        },
+        //底部导航收起
+        navFold: () => {
             return jsChannel({
                 type: 'chat', data: {
                     action: 'navFold',
@@ -128,7 +139,9 @@ export default {
             })
         }
 
-    }, db: {
+    },
+    //数据库
+    db: {
         execute: async ({sql}) => {
             return jsChannel({
                 type: 'db', data: {
@@ -359,26 +372,30 @@ export default {
                 }, callback: {}
             })
         }
-    }, device: {
-        info: () => {
-            return jsChannel({
-                type: 'device', data: {
-                    action: 'info',
-                }, callback: {}
-            })
-        }
     },
+    //小程序窗口
     mini_program: {
+        //创建
         push: ({
                    url,
                    appBar = {
                        title: '',
                        bgColor: '#ECEDEC',
                        elevation: 0.01,
-                       showBar: true,
                        showSetting: true,
                        showClose: true,
-                       closePop: true
+                       closePop: true,
+                       safeArea: {
+                           safeHeight: false,
+                           bgColor: '#FFFFFF',
+                           appBarHeight: false,
+                           bgOpacity: 0.99,
+                       }
+                   },
+                   bottomSafeArea = {
+                       safeHeight: true,
+                       bgColor: '#FFFFFF',
+                       bgOpacity: 0.99
                    },
                    loading = false,
                    loadingColor = '#5370EA',
@@ -389,6 +406,7 @@ export default {
                 type: 'mini_program', data: {
                     action: 'push',
                     appBar,
+                    bottomSafeArea,
                     url,
                     loadingColor,
                     loading,
@@ -396,13 +414,15 @@ export default {
                     bgColor,
                 }, callback: {}
             })
-        }, listen: async ({
-                              onSetting = function (data) {
-                                  console.log('click setting')
-                              }, onClose = function (data) {
+        },
+        //监控按钮
+        listen: async ({
+                           onSetting = function (data) {
+                               console.log('click setting')
+                           }, onClose = function (data) {
                 console.log('click onClose')
             },
-                          }) => {
+                       }) => {
             let data = {
                 action: 'listen', appBar: {}
             }
@@ -417,14 +437,19 @@ export default {
             return jsChannel({
                 type: 'mini_program', data, callback: {}
             })
-        }, pop: () => {
+        },
+        //关闭
+        pop: () => {
             return jsChannel({
                 type: 'mini_program', data: {
                     action: 'pop',
                 }, callback: {}
             })
         }
-    }, navigator: {
+    },
+    //导航窗口
+    navigator: {
+        //创建
         push: ({
                    url,
                    appBar = {
@@ -455,13 +480,15 @@ export default {
                     miniAnimation,
                 }, callback: {}
             })
-        }, listen: async ({
-                              onMore = function (data) {
-                                  console.log('click onMore')
-                              }, onBack = function (data) {
+        },
+        //监控按钮
+        listen: async ({
+                           onMore = function (data) {
+                               console.log('click onMore')
+                           }, onBack = function (data) {
                 console.log('click onBack')
             },
-                          }) => {
+                       }) => {
             let data = {
                 action: 'listen', appBar: {}
             }
@@ -476,32 +503,58 @@ export default {
             return jsChannel({
                 type: 'navigator', data, callback: {}
             })
-        }, pop: () => {
+        },
+        //关闭窗口
+        pop: () => {
             return jsChannel({
                 type: 'navigator', data: {
                     action: 'pop',
                 }, callback: {}
             })
         }
-    }, page: {
+    },
+    //页面控制
+    page: {
+        //加载中
         loading: () => {
             return jsChannel({
                 type: 'page', data: {
                     action: 'loading',
                 }, callback: {}
             })
-        }, loaded: () => {
+        },
+        //加载完成
+        loaded: () => {
             return jsChannel({
                 type: 'page', data: {
                     action: 'loaded',
                 }, callback: {}
             })
         }
-    }, version: {
-        info: () => {
+    },
+    //应用
+    app: {
+        //获取客户端版本
+        version: () => {
             return jsChannel({
-                type: 'sdk', data: {
-                    action: 'info',
+                type: 'app', data: {
+                    action: 'version',
+                }, callback: {}
+            })
+        },
+        //设备信息
+        device: () => {
+            return jsChannel({
+                type: 'app', data: {
+                    action: 'device',
+                }, callback: {}
+            })
+        },
+        //退出
+        exit: () => {
+            return jsChannel({
+                type: 'app', data: {
+                    action: 'exit',
                 }, callback: {}
             })
         }

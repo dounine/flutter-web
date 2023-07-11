@@ -33,7 +33,7 @@
         <span class="normal-case">背景颜色</span>
       </div>
       <div class="ml-2 flex-1 justify-end">
-        <input v-model="bgColor" type="text" placeholder="#99CCFF"
+        <input v-model="bgColor" type="text" placeholder="#FFFFFF"
                class="input input-bordered border-neutral-content w-full max-w-xs text-right bg-opacity-40"/>
       </div>
     </div>
@@ -100,10 +100,20 @@ const push = async () => {
       title: title.value,
       bgColor: appBarColor.value,
       elevation: parseFloat(elevation.value),
-      showBar: true,
-      showSetting: true,
+      showSetting: false,
       showClose: true,
       closePop: true,
+      safeArea: {
+        safeHeight: true,
+        bgColor: '#FFFFFF',
+        appBarHeight: false,
+        bgOpacity: 0.99
+      }
+    },
+    bottomSafeArea: {
+      safeHeight: true,
+      bgColor: '#FFFFFF',
+      bgOpacity: 0.99
     },
     url: url.value,
     bgColor: bgColor.value,

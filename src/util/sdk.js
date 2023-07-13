@@ -457,10 +457,15 @@ export default {
                        bgColor: '#ECEDEC',
                        miniIcon: false,
                        elevation: 0.01,
-                       backEnable: false,
+                       backShow: false,
                        backClose: true,
-                       moreEnable: false,
+                       moreShow: false,
                        loadingShow: true
+                   },
+                   bottomSafeArea = {
+                       safeHeight: true,
+                       bgColor: '#FFFFFF',
+                       bgOpacity: 0.99
                    },
                    loading = false,
                    loadingColor = '#5370EA',
@@ -472,6 +477,7 @@ export default {
                 type: 'navigator', data: {
                     action: 'push',
                     appBar,
+                    bottomSafeArea,
                     url,
                     loadingColor,
                     loading,
@@ -528,6 +534,16 @@ export default {
             return jsChannel({
                 type: 'page', data: {
                     action: 'loaded',
+                }, callback: {}
+            })
+        }
+    },
+    status_bar: {
+        change: ({color}) => {
+            return jsChannel({
+                type: 'status_bar', data: {
+                    action: 'change',
+                    color
                 }, callback: {}
             })
         }

@@ -57,9 +57,11 @@ const darkChange = () => {
     // document.documentElement.classList.add('dark')
     document.documentElement.attributes['data-theme'].value = 'dark'
     localStorage.setItem('theme', 'dark')
+    sdk.status_bar.change({color:'#1E2329'})
   } else {
     document.documentElement.attributes['data-theme'].value = 'light'
     localStorage.setItem('theme', 'light')
+    sdk.status_bar.change({color:'#FFFFFF'})
   }
   // console.log(value);
 }

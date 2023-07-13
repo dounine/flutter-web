@@ -1,4 +1,5 @@
 import {createRouter, createWebHashHistory} from "vue-router"
+
 const routes = [
     {
         path: '/',
@@ -20,10 +21,6 @@ const routes = [
         path: '/cache',
         name: 'cache',
         component: () => import('../view/CacheView.vue')
-    }, {
-        path: '/window',
-        name: 'window',
-        component: () => import('../view/WindowView.vue')
     }, {
         path: '/db',
         name: 'db',
@@ -72,6 +69,10 @@ const routes = [
         path: '/about',
         name: 'about',
         component: () => import('../view/AboutView.vue')
+    }, {
+        path: '/status_bar',
+        name: 'status_bar',
+        component: () => import('../view/StatusBarView.vue')
     }, {
         path: '/navigator',
         name: 'navigator',

@@ -121,10 +121,15 @@ const push = async () => {
       miniIcon: miniIcon.value,
       bgColor: appBarColor.value,
       elevation: parseFloat(elevation.value),
-      backEnable: true,
+      backShow: true,
       backClose: true,
-      moreEnable: true,
+      moreShow: true,
       loadingShow: false
+    },
+    bottomSafeArea: {
+      safeHeight: true,
+      bgColor: '#FFFFFF',
+      bgOpacity: 0.99
     },
     url: url.value,
     miniAnimation: miniAnimation.value,

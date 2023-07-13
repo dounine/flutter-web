@@ -102,6 +102,8 @@ const push = async () => {
       elevation: parseFloat(elevation.value),
       showSetting: false,
       showClose: true,
+      showBack: false,
+      showHome: false,
       closePop: true,
       safeArea: {
         safeHeight: true,

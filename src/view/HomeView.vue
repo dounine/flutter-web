@@ -7,7 +7,7 @@
       <div class="divider m-0"></div>
       <Cell title="小程序" to="/mini_program" desc="mini_program"></Cell>
       <div class="divider m-0"></div>
-      <Cell title="窗口" to="/window" desc="window"></Cell>
+      <Cell title="状态栏" to="/status_bar" desc="status_bar"></Cell>
       <div class="divider m-0"></div>
       <Cell title="聊天" to="/chat" desc="chat"></Cell>
       <div class="divider m-0"></div>
